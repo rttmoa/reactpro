@@ -4,7 +4,8 @@ import Indexs from '../component/Indexs'
 import List from '../component/List'
 
 
-// 当在输入框输入时、不断渲染render函数中的所有数据、非常浪费性能
+
+// 当在输入框输入时、不断触发render函数中的所有数据、非常浪费性能
 
 class Index extends React.Component{
     constructor(props){
