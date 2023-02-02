@@ -1,8 +1,5 @@
-
 react-redux配置
-
 react-router-dom配置
-
 零、react-router配置
     传参与接收：params,search,state,query,history,Link  ->  只要命中Route中的path即可渲染component
         {/* https://blog.csdn.net/QTFYING/article/details/77939171?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&utm_relevant_index=6 */}
@@ -36,4 +33,7 @@ react-router-dom配置
 
 
 四、用户列表表单：List.js
-    
+    1、Table组件的使用
+    2、取消按钮的加载及禁用效果
+
+五、

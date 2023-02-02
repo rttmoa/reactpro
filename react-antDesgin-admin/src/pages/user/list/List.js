@@ -3,7 +3,7 @@ import { Table, Button } from 'antd';
 
 
 
-const columns = [
+const columns = [  // 前台展示的数据
   {
     title: '姓名',
     dataIndex: 'name',
@@ -23,7 +23,7 @@ const columns = [
 ];
 
 const data = [];
-for (let i = 0; i < 46; i++) {
+for (let i = 0; i < 46; i++) {  // 模拟：后台的数据
   data.push({
     key: i,
     name: `Nicholas H.Tao ${i}`,
@@ -44,29 +44,33 @@ class List extends React.Component {
 
   start = () => {
     this.setState({ loading: true });
-    this.setState({
-      selectedRowKeys: [],
-      loading: false,
-    });
+
+    setTimeout(() => {
+      this.setState({
+        selectedRowKeys: [],
+        loading: false,
+      });
+    }, 3000);
   };
 
   onSelectChange = selectedRowKeys => {
     this.setState({ selectedRowKeys });
   };
 
+
   render() {
+
     const { loading, selectedRowKeys } = this.state;
     const rowSelection = {
       selectedRowKeys,
       onChange: this.onSelectChange,
     };
     const hasSelected = selectedRowKeys.length > 0;
+
     return (
       <div className="content-wrap">
         <div style={{ marginBottom: 16 }}>
-          <Button type="primary" onClick={this.start} disabled={!hasSelected} loading={loading}>
-            取消
-          </Button>
+          <Button type="primary" onClick={this.start} disabled={!hasSelected} loading={loading}> 取消 </Button>
           <span style={{ marginLeft: 8 }}>
             {hasSelected ? `选择 ${selectedRowKeys.length} 条记录` : ''}
           </span>
