@@ -14,6 +14,7 @@ const { SubMenu } = Menu;
 class SiderBar extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       collapsed: false,
       menuList: [],
@@ -89,7 +90,7 @@ class SiderBar extends React.Component {
     return titleArray;
   };
 
-  // 点击侧边栏
+  // 点击侧边栏 -- redux
   handleClick = (item) => {
     const currentKey = '/' + item.key.split('/')[1];
     const pathname = item.key;
@@ -127,6 +128,9 @@ class SiderBar extends React.Component {
       </Sider>
     );
   }
+
+
+  // 测试react-router
   HandleC () {
     this.props.history.push("/route/Lisi")
   }
