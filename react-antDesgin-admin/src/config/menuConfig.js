@@ -39,7 +39,7 @@ const menuConfig = [
   },
   {
     title: '路由',
-    key: 'route',
+    key: '/route',
     icon: 'build',
     children: [
       {

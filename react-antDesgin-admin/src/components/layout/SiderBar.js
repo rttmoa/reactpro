@@ -27,6 +27,7 @@ class SiderBar extends React.Component {
   componentWillMount() {
     this.handleDefaultSelect();
     const menuList = this.setMenu(menuConfig);
+    // console.log(menuList)
     this.setState({
       menuList
     });
@@ -38,7 +39,13 @@ class SiderBar extends React.Component {
     menuConfig.forEach((item) => {
       menuConfigKeys.push(item.key);
     });
+    // console.log(menuConfigKeys) //  ['/', '/user', '/tool', '/route']
     const pathname = window.location.pathname;
+    // console.log(pathname)                   //  /user/list
+    // console.log(pathname.split('/'))        //  ['', 'user', 'list']
+    // console.log(pathname.split('/')[1])     //  user
+    // console.log('/'+pathname.split('/')[1]) //  /user
+
     const currentKey = '/' + pathname.split('/')[1];
     const titleArray = this.selectBreadcrumb(currentKey, pathname);
     if (menuConfigKeys.indexOf(currentKey) === 1) {
@@ -87,6 +94,7 @@ class SiderBar extends React.Component {
         });
       }
     });
+    // console.log(titleArray) // ['用户', '联系'] | ['用户', '用户列表'] | ['首页'] | ['组件', '富文本']
     return titleArray;
   };
 
@@ -100,7 +108,7 @@ class SiderBar extends React.Component {
 
   // 收缩侧边栏
   onCollapse = collapsed => {
-    this.setState({ collapsed });
+    this.setState({ collapsed }); // true/false
   };
 
 
