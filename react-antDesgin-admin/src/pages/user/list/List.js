@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Button } from 'antd';
 
+
+
 const columns = [
   {
     title: '姓名',
@@ -34,6 +36,7 @@ for (let i = 0; i < 46; i++) {
 
 
 class List extends React.Component {
+  
   state = {
     selectedRowKeys: [],
     loading: false,
