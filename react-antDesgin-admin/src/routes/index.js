@@ -35,6 +35,8 @@ class Index extends React.Component {
                       <Route path="/user/connect" component={ Connect }/>
                       <Route path="/user/list" component={ List }/>
                       <Route path="/tool/rich" component={ Rich }/>
+                      <Route component={ NotFind }/>
+
                       
                       {/* https://blog.csdn.net/QTFYING/article/details/77939171?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&utm_relevant_index=6 */}
                       <Route path="/route/:name" component={params}></Route>
@@ -65,7 +67,6 @@ class Index extends React.Component {
 
 
 
-                      <Route component={ NotFind }/>
                     </Switch>
                 </div>
             </Layout>

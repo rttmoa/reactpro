@@ -1,11 +1,16 @@
+
 react-redux配置
 react-router-dom配置
-零、react-router配置
+react-router配置
     传参与接收：params,search,state,query,history,Link  ->  只要命中Route中的path即可渲染component
         {/* https://blog.csdn.net/QTFYING/article/details/77939171?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&utm_relevant_index=6 */}
         {/* https://blog.csdn.net/weixin_42799526/article/details/114297245?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-114297245-blog-106645039.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-114297245-blog-106645039.pc_relevant_default&utm_relevant_index=1 */}
         {/* react-router总结之路由传值: https://blog.csdn.net/my_love_download/article/details/109522517?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-109522517-blog-81355310.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-109522517-blog-81355310.pc_relevant_aa2&utm_relevant_index=5 */}
 
+
+App.js中根据Route中path渲染login页面和routes页面
+routes->indexjs中配置后台页面：侧边栏、头部、每个要渲染的Page页面
+routes中判断是否有token、如果没有重定向到login页面
 
 一、登陆页面：login.js
     0、!render函数中返回组件： return ( loggedIn ? ( <Redirect to="/"/> ) : LoginForm );
@@ -36,4 +41,9 @@ react-router-dom配置
     1、Table组件的使用
     2、取消按钮的加载及禁用效果
 
-五、
+五、头部
+    1、面包屑和用户退出登陆
+    2、下拉菜单组件Dropdown和菜单Menu组件 退出登录 的使用 | 控制Dropdow的显示与隐藏
+    3、组件的封装与传值HeaderBar|UserInfo
+
+六、侧边栏

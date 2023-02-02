@@ -7,6 +7,7 @@ const { Header } = Layout;
 
 
 class UserInfo extends React.Component {
+  
   state = {
     visible: false,   // 菜单是否显示
   };
@@ -24,6 +25,7 @@ class UserInfo extends React.Component {
   handleVisibleChange = flag => {
     this.setState({ visible: flag });
   };
+
 
   render() {
     const menu = (
@@ -43,12 +45,15 @@ class UserInfo extends React.Component {
 }
 
 const HeaderBar = (props) => {
-  
+
+  // console.log(props)
   return (
     <Header>
       <Breadcrumb>
         {
           props.menuName.map((item) => {
+
+            // console.log(item) 
             return (
               <Breadcrumb.Item key={ item }>{ item }</Breadcrumb.Item>
             );
@@ -61,6 +66,8 @@ const HeaderBar = (props) => {
 };
 
 const mapStateToProps = (state) => {
+
+  // console.log(state)
   return {
     menuName: state.menuName
   }
