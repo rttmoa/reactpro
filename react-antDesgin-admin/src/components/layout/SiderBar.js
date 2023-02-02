@@ -103,6 +103,8 @@ class SiderBar extends React.Component {
     this.setState({ collapsed });
   };
 
+
+  
   render() {
     let name;
     if (!this.state.collapsed) {
@@ -114,11 +116,13 @@ class SiderBar extends React.Component {
           <img className="logo-img" src={ logoURL } alt=""/>
           { name }
         </div>
-        <Menu onClick={ this.handleClick } theme="dark"
-              defaultOpenKeys={ this.state.defaultOpenKeys }
-              defaultSelectedKeys={ this.state.defaultSelectedKeys }
-              mode="inline">
-          { this.state.menuList }  
+        <Menu
+          onClick={ this.handleClick } theme="dark"
+          defaultOpenKeys={ this.state.defaultOpenKeys }
+          defaultSelectedKeys={ this.state.defaultSelectedKeys }
+          mode="inline"
+        >
+          { this.state.menuList }
         </Menu>
 
         <button onClick={this.HandleC.bind(this)}>传递params参数</button>
