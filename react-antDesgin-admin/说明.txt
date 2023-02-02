@@ -4,11 +4,23 @@
 
 
 
+一、登陆页面：login.js
+    0、!render函数中返回组件： return ( loggedIn ? ( <Redirect to="/"/> ) : LoginForm );
+    1、获取localStoreage：const loggedIn = window.localStorage.getItem('loggedIn'); // null
+    2、存储localstoreage：window.localStorage.setItem('loggedIn', true);
+    3、路由跳转：this.props.history.push('/');
+    4、Input组件使用Icon：<Input prefix={<Icon type="user" className='login-icon' />} placeholder="用户名admin"/>,
+    5、!使用Form表单：
+        5.1、Form.create({ name: 'normal_login' })(Login)
+        5.2、this.props.form.getFieldDecorator函数的使用：
+              { getFieldDecorator('username', {rules: [{ required: true, message: '请输入用户名!' }],})(
+              // CSS图标颜色：rgba(0,0,0,0.25)
+              <Input prefix={<Icon type="user" className='login-icon' />} placeholder="用户名admin"/>, )} 
+        5.2、校验值：this.props.form.validateFields((err, values) => { }
 
 
-
-
-
-
-
+二、主页：Home.js
+    1、highcharts图表的配置与使用：https://www.hcharts.cn/demo/highcharts#line
+    2、Div布局+flex布局
+    3、双类名：<div className={ `cart-item-icon ${item.icon}` }> <Icon type={ item.icon }/> </div>
 

@@ -1,18 +1,26 @@
+
+
+
+/* 总的盒子：中间新增用户数、累计访问、分享统计 */
 .cart-list {
   display: flex;
   padding-bottom: 15px;
   align-items: center;
+  /* background-color: red; */
 }
 
+/* 每一个大盒子 */
 .cart-list .cart-item {
   flex: 1;
   background: #fff;
   margin-right: 15px;
   display: flex;
-  align-items: center;
+  align-items: center;  
   height: 90px;
 }
 
+
+/* 图标部分 */
 .cart-list .cart-item-icon {
   height: 90px;
   line-height: 90px;
@@ -20,24 +28,22 @@
   color: #fff;
   font-size: 34px;
   flex: 0 0 90px;
-}
-
+} 
 .cart-list .cart-item:last-child {
   margin-right: 0;
-}
-
+} 
 .cart-list .cart-item-icon.user-add {
   background: #f7a35c;
-}
-
+} 
 .cart-list .cart-item-icon.heart {
   background: #90ed7d;
-}
-
+} 
 .cart-list .cart-item-icon.share-alt {
   background: #7cb5ec;
 }
 
+
+/* 数字及文字部分 */
 .cart-list .cart-item-content {
   width: 100%;
   height: 100%;
@@ -56,6 +62,11 @@
   line-height: 1;
 }
 
+
+
+
+
+/* 用户访问系统路径、最近一周用户数据 */
 .user-chart {
   display: flex;
 }
