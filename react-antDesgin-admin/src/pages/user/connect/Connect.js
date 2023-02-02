@@ -1,6 +1,9 @@
 import React from 'react';
 import connectUrl from '../../../images/connect.jpg';
 import './connect.css';
+
+
+
 class Connect extends React.Component {
 
   render() {
