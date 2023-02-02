@@ -6,6 +6,7 @@ react-router配置
         {/* https://blog.csdn.net/QTFYING/article/details/77939171?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-77939171-blog-81355310.pc_relevant_aa2&utm_relevant_index=6 */}
         {/* https://blog.csdn.net/weixin_42799526/article/details/114297245?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-114297245-blog-106645039.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-114297245-blog-106645039.pc_relevant_default&utm_relevant_index=1 */}
         {/* react-router总结之路由传值: https://blog.csdn.net/my_love_download/article/details/109522517?spm=1001.2101.3001.6650.4&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-109522517-blog-81355310.pc_relevant_aa2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-109522517-blog-81355310.pc_relevant_aa2&utm_relevant_index=5 */}
+webpack.config.js配置
 
 
 App.js中根据Route中path渲染login页面和routes页面
