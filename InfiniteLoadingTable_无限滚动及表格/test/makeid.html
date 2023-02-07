@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function makeid(length) {
+            // console.log(length) // 父组件传递过来的length长度
+            var result = "";
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var charactersLength = characters.length; // 62
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                // console.log(result)
+            }
+            return result;
+        }
+        // makeid(20)
+
+        // console.log(Math.random() * 62)  // (0 < x < 1) * 62
+        // console.log(Math.floor(Math.random() * 62)) // 0-61  向下取整
+        // console.log(Math.floor(Math.random() * 6)) // 0-5  向下取整
+
+
+
+
+        const columnList = [
+            { name: "column1", length: 30 },
+            { name: "column2", length: 30 },
+            { name: "column3", length: 30 },
+            { name: "column4", length: 20 },
+            { name: "column5", length: 20 },
+        ];
+        let sb = columnList.reduce((pre, cur) =>  
+            Object.assign({[cur.name]: makeid(cur.length)}, pre), {}
+        )
+        console.log(Object.assign({index: 1}, sb))
+
+
+        function generateRow(count, len) {
+            let newList = [];
+            for (let i = 0; i < count; i++) {
+
+                let row = columnList.reduce((pre, current) =>
+                    Object.assign({[current.name]: makeid(current.length)}, pre), {}
+                );
+                // console.log('row', row)
+                newList.push(Object.assign({index: i + len}, row));
+            }
+            return newList;
+        }
+        // console.log(generateRow(2, 1))
+    </script>
+</body>
+
+</html>
