@@ -1,0 +1,53 @@
+
+React目录结构  React创建组件、 ReactJSX语法、 React绑定数据 React绑定对象 、React绑定属性( 绑定class  绑定style 图片)
+
+
+
+
+
+
+
+manifest.json 文件简介：
+
+	https://lavas.baidu.com/mip/doc/engage-retain-users/add-to-home-screen/introduction
+
+	
+	允许将站点添加至主屏幕，是 PWA 提供的一项重要功能，当前 manifest.json 的标准仍属于草案阶段，
+	Chrome 和 Firefox 已经实现了这个功能，微软正努力在 Edge 浏览器上实现，Apple 目前仍在考虑中
+
+
+
+super关键字：
+
+	
+	参考：http://www.phonegap100.com/thread-4911-1-1.html
+
+
+	Es6中的super可以用在类的继承中，super关键字，它指代父类的实例（即父类的this对象）。
+	子类必须在constructor方法中调用super方法，否则新建实例时会报错。
+	这是因为子类没有自己的this对象，而是继承父类的this对象，然后对其进行加工。
+	如果不调用super方法，子类就得不到this对象。
+
+
+
+	class Person {
+ 	 	constructor (name) {
+  	  		this.name = name;
+  		}
+	}
+
+	class Student extends Person {
+  		constructor (name, age) {
+    			super(); // 用在构造函数中，必须在使用this之前调用
+    			this.age = age;
+ 		 }
+	}
+
+
+
+为什么官方的列子里面写个super(props)：
+
+
+	只有一个理由需要传递props作为super()的参数，那就是你需要在构造函数内使用this.props
+
+那官方提供学习的例子中都是写成super(props)，所以说写成super(props)是完全没问题的，也建议就直接这样写。

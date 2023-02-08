@@ -1,0 +1,149 @@
+02 React创建组件-jsx- 绑定数据
+    1.React 定义数据(this.state) 
+    2.div中绑定this.state中的属性  标签内部渲染(p)以及标签属性中渲染(className, style, title)
+    3.App.js中渲染<Home />, <News /> 组件
+    4.class继承--
+        class Person {
+            constructor (name) {
+                this.name = name;
+            }
+        }
+        class Student extends Person {
+            constructor (name, age) {
+                    super(); // 用在构造函数中，必须在使用this之前调用
+                    this.age = age;
+            }
+        }
+
+03 React 创建组件、绑定属性(class_style)引入图片  循环数组渲染数据
+    1.绑定数据 绑定对象--this.state中渲染对象和数组的数据
+    2.引入图片 | 本地图片/远程图片
+    3.遍历数组 渲染数据 三种方式
+
+04 React事件 改变this指向问题
+    改变this指向的三种方法
+    1.onClick={this.getData.bind(this)} 获取this.state中的属性
+    2. this.getMessage = this.getMessage.bind(this);
+    3.箭头函数
+
+05 React 键盘事件 表单事件 事件对象以及React中的ref获取dom节点 、React实现类似Vue的双向数据绑定
+    Home.js
+        * 1.获取 Button按钮中的事件、属性 | React获取dom节点 (aid)
+        * 2.input输入框中的值 改变页面中的值(this.setState)
+        * 3.Button按钮中 获取input框中的值(this.state)
+    List.js
+        * 1.获取输入框中的值(通过ref)
+        * 2.键盘事件(onKeyUp/onKeyDown)
+    TodoList.js
+        * 1.双向数据绑定----  Model改变影响View view改变反过来影响Model
+        * 2.input中改变(this.state)里面的属性值
+        * 3.button中改变(this.state)里面的属性值
+
+06 React表单详解 约束性和非约束性组件 input text checkbox radio  select  textarea  以及获取表单的内容
+    Home.js
+        {/* MVVM --> 约束组  value*/}
+        <input type="text" value={this.state.username} onChange={this.handleUsername} />
+    ReactForm.js
+            * 1.ReactForm------提交表单( 获取表单 )
+            * 2.input text checkbox radio  select  textarea  以及获取表单的内容
+            * 3.监听的 value和onChange事件 以及 渲染数据
+            <input type="text" value={this.state.name} onChange={this.handleName} />
+
+
+TodoList案例
+
+10 React-props父子组件传值、父组件中通过refs获取子组件属性和方法
+    父子组件传值
+
+11 React  propTypes  defaultProps
+    propTypes:  
+         父组件给 Header 组件传递 title属性和num属性--指定num为number类型
+         Header.propTypes={ num:PropTypes.number }
+
+12 React 获取服务器数据 axios插件 fetch-jsonp插件的使用
+    axios.get('http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20').then(data=> {}).catch(err=> {})
+
+13 React 生命周期函数
+    必须记住的生命周期函数：
+    *加载的时候：componentWillMount、 render 、componentDidMount（dom操作）
+    *更新的时候：componentWillUpdate、render、componentDidUpdate
+    *销毁的时候： componentWillUnmount
+
+14 React路由 react-router4.x的基本配置
+    3、找到项目的根组件引入react-router-dom
+    import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+    4、复制官网文档根组件里面的内容进行修改  （加载的组件要提前引入）
+         <Router>
+                <Link to="/">首页</Link>
+                <Link to="/news">新闻</Link>
+                <Link to="/product">商品</Link>
+               <Route exact path="/" component={Home} />
+               <Route path="/news" component={News} />    
+               <Route path="/product" component={Product} />   
+         </Router>
+         exact表示严格匹配
+    react动态路由传值
+        1、动态路由配置
+            <Route path="/content/:aid" component={Content} />   
+        2、对应的动态路由加载的组件里面获取传值
+            this.props.match.params
+        跳转：<Link to={`/content/${value.aid}`}>{value.title}</Link>
+    react get传值  
+        1、获取 this.props.location.search
+
+
+21 React UI框架Antd(Ant Design)的使用 以及react Antd的使用 button组件 Icon组件 Layout组件 DatePicker日期组件
+    antd组件的使用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+React-router4.x+Ant Design+Flux-->
+
+-->01 React脚手架搭建环境
+    -->npx安装(多次)    ||   全局安装(一次)
+    
+-->02 React目录结构  React创建组件、 ReactJSX语法、 React绑定数据 React绑定对象 、React绑定属性
+    -->
+
+-->03 React 创建组件、绑定属性(class_style)引入图片  循环数组渲染数据
+    -->引入图片的三种方法、循环数据的两种方法、设置css属性、绑定数据、绑定属性
+
+
+-->04 React事件 方法、 React定义方法的几种方式 获取数据 改变数据 执行方法传值
+    --> 使用Button获取数据 改变this指向的三种方法   、this 执行方法传值
+
+
+-->05 React 键盘事件 表单事件 事件对象以及ref获取dom节点_React实现类似Vue的双向数据绑定
+    -->事件对象：在触发DOM上的某个事件时、会产生一个事件对象event、这个对象中包含着所有与事件有关的信息
+        获取input里面的值(两种方法) ||  双向数据绑定
+
+-->06 React表单详解 约束性和非约束性组件 input text checkbox radio  select  textarea  以及获取表单的内容
+    -->获取表单的内容
+
+
+-->07 React实现Todolist练习
+    -->http://www.todolist.cn/
+
+-->08 React实现Todolist练习 Todolist 待办事项 已经完成_中
+    -->
+
+-->09 React的模块化以及封装Storage实现todolist 待办事项 已经完成事项 以及实现数据持久化_下
+    -->localStorage 的 setItem getItem remove 方法
+
+-->10 React-props父组件与子组件相互传值、父组件中通过refs获取子组件属性和方法
+    -->
+
+
+ 
