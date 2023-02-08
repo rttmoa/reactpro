@@ -1,0 +1,29 @@
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    </head>
+    <body>
+    
+    <p>点击按钮后对数组元素进行四舍五入并计算总和。</p>
+    <button onclick="myFunction()">点我</button>
+    
+    <p>数组元素之和: <span id="demo"></span></p>
+    
+    <script>
+        var numbers = [15.5, 2.3, 1.1, 4.7];
+        
+        function getSum(total, num) {
+            // console.log('total', total)
+            // console.log('num', num);
+            return total + Math.round(num);
+        }
+        function myFunction(item) {
+            const res = numbers.reduce(getSum, 0);
+            console.log(res)
+            document.getElementById("demo").innerHTML = res
+        }
+
+
+    </script>
+    
+    </body>
