@@ -1,4 +1,10 @@
 /**index.wxss**/
+
+ /* 与CSS相比，wxss扩展特性有
+      1、rpx尺寸单位
+      2、@import样式导入
+ */
+
 @import "/common/common.wxss";
 
 view {
