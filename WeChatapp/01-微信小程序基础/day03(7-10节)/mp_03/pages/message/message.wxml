@@ -1,9 +1,17 @@
 <!--pages/message/message.wxml-->
+
+
 <text>pages/message/message.wxml</text>
 
-<view>count值是：{{count}}</view>
+
+
+
+
+<view>count值是: {{count}}</view>
 <button bindtap="addCount">+1</button>
 
+
+<!-- 渲染wxs脚本 -->
 <view>{{m1.toUpper(username)}}</view>
 <view>{{m2.toLower(country)}}</view>
 

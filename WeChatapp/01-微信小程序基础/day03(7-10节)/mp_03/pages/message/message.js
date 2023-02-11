@@ -1,6 +1,8 @@
 // pages/message/message.js
 Page({
 
+
+  /**--- 监听用户下拉动作 ---**/
   /**
    * 页面的初始数据
    */

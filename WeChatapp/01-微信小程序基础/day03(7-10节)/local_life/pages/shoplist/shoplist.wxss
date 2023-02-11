@@ -11,6 +11,7 @@
 .thumb image {
   width: 250rpx;
   height: 250rpx;
+  /* 图片与图片之间无间距 */
   display: block;
   margin-right: 15rpx;
 }

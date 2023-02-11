@@ -3,9 +3,11 @@ function splitPhone(str) {
 
   var arr = str.split('')
 
+  // 数组中插入 -
   arr.splice(3, 0, '-')
   arr.splice(8, 0, '-')
-
+  
+  // 数组转字符串并返回
   return arr.join('')
 }
 

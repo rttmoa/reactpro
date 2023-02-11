@@ -3,5 +3,7 @@ function toLower(str) {
 }
 
 module.exports = {
-  toLower: toLower
+        // toLower   不支持简写
+
+  toLower: toLower 
 }

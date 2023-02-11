@@ -1,6 +1,8 @@
 // pages/contact/contact.js
 Page({
 
+
+  /**--- 上拉触底 节流阀函数 ---**/
   /**
    * 页面的初始数据
    */

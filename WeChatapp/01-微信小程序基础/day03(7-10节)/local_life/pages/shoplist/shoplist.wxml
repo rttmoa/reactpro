@@ -4,7 +4,7 @@
 
 
 
-
+<!-- 布局：图片与文字左右布局、文字标题加粗、文字中使用flex -->
 <view class="shop-item" wx:for="{{shopList}}" wx:key="id">
   <view class="thumb">
     <image src="{{item.images[0]}}"></image>

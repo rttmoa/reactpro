@@ -2,6 +2,7 @@
 
 
 
+微信开发者文档：https://developers.weixin.qq.com/miniprogram/dev/framework/
 
 
 Day01: (页面数据详情：调试器/AppData)
@@ -91,3 +92,32 @@ Day03: (页面数据详情：调试器/AppData)
 
     渲染九宫格数据(页面设计)
 
+    生命周期的分类：
+        1、应用生命周期(app.js)
+            特指小程序从启动、运行、销毁期间依次调用的那些函数
+
+        2、页面生命周期(Page每个页面)
+            特指小程序中，每个页面从加载、渲染、销毁期间依次调用的那些函数
+        
+    wxs语法：不支持ES6高级语法、数据类型和js基本相同(无undefined、null)、wxs遵循commonjs规范(module, require(), module.exports)
+        内嵌wxs脚本(/pages/message/message.wxml)
+        外联wxs脚本(/pages/message/message.wxml) 
+
+    本地生活案例
+        1、在AppData中查看数据变化   网络改为3g
+        2、调试器  --> 查看网络 --> xhr的数据变化(下拉触底)
+        3、在普通编译、自定义编译  ||  启动页面：pages/shoplist/shoplist   ||   启动参数：id=1&title=美食
+        4、上拉触底实现过程： 
+            4.1、将触底距离改为200rpx
+            4.2、在onReachBottom函数中让page+1
+            4.3、再重新调用getShopList函数
+        5、total: res.header['X-Total-Count'] - 0,    /// total(总数据条数)   ：字符串类型转换为数字类型
+        6、接口地址：https://www.escook.cn/categories/:cate_id/shops
+        7、请求地址：https://www.escook.cn/categories/${this.data.query.id}/shops
+        8、如果下面公式成立,则证明没有下一页数据了
+            页码值 * 每页显示多少条数据 >= 总数据条数   page * pageSizi >= total
+        9、下拉刷新需要重置一些数据
+            9.1、重置关键性数据
+            9.2、根据关键性数据重新发起请求 
+            9.3、先下拉让page为3、再上拉查看AppData中的数据是否改变
+        10、wxs处理手机号脚本
