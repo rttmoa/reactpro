@@ -121,3 +121,14 @@ Day03: (页面数据详情：调试器/AppData)
             9.2、根据关键性数据重新发起请求 
             9.3、先下拉让page为3、再上拉查看AppData中的数据是否改变
         10、wxs处理手机号脚本
+
+
+
+Day04:
+
+    自定义组件
+        component: .js/.json/.wxml/.wxss
+        在根app.json->usingComponents创建组件
+        全局引用 & 局部引用
+            全局在app.json中引用
+            局部在每个page中指定才可引用
