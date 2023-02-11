@@ -126,9 +126,12 @@ Day03: (页面数据详情：调试器/AppData)
 
 Day04:
 
-    自定义组件
-        component: .js/.json/.wxml/.wxss
-        在根app.json->usingComponents创建组件
-        全局引用 & 局部引用
-            全局在app.json中引用
-            局部在每个page中指定才可引用
+    一、自定义组件
+        1、component: .js/.json/.wxml/.wxss
+        2、在根app.json->usingComponents创建组件
+        3、全局引用 & 局部引用
+            3.1、全局在app.json中引用
+            3.2、局部在每个page中指定才可引用
+        4、全局引用 VS 局部引用
+        
+        1-11 05
