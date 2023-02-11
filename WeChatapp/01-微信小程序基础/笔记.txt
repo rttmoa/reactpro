@@ -67,6 +67,17 @@ Day03:
             3、后退导航
 
     页面事件：
+        下拉刷新案例(/pages/messagejs)
+
+        上拉触底案例(/pages/contactjs) 
+            上拉触底节流案例：对上拉触底进行节流处理
+                1、在data中定义isloading节流阀
+                    false表示当前没有任务数据请求
+                    true表示当前正在进行数据请求
+                2、在getColors()方法中修改isloading节流阀的值
+                    在刚调用getColors时将节流阀设置true
+                    在网络请求的complete回调函数中，将节流阀重置为false
+                3、在onReachBottom中判断节流阀的值、从而对数据请求进行节流控制
+                    如果节流阀的值为true、则组件当前请求
+                    如果节流阀的值为false、则发起数据请求
         
-    
-    1-8

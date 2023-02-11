@@ -37,9 +37,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { this.getColors() },
+
+
+  
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log("触发了上拉触底事件")
+    if (this.data.isloding) return;
     this.getColors()
   },
+
+
+
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -76,14 +93,6 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    if (this.data.isloding) return
-
-    this.getColors()
-  },
 
   /**
    * 用户点击右上角分享

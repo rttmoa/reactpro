@@ -1,4 +1,10 @@
 /* pages/contact/contact.wxss */
+
+
+
+
+
+
 .num-item {
   border: 1rpx solid #efefef;
   border-radius: 8rpx;
