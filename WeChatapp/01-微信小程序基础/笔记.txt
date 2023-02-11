@@ -6,5 +6,6 @@
 
 Day02: 
     app.json全局配置 文件及常用的配置项：1、Pages   2、window    3、tarBar   4、style
-
+        1、配置Window
+        2、配置tabBar 
 
