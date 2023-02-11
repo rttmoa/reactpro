@@ -59,4 +59,5 @@
 
 <view>~~~~~~</view>
 
+<!-- class使用的是common中导入的样式 -->
 <view wx:for="{{userList}}" wx:key="id" class="username">{{item.name}}</view>
