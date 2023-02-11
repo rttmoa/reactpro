@@ -29,4 +29,19 @@ Day02:
         1、配置Window：导航背景、导航标题、导航颜色、能够下拉刷新、触底距离
         2、配置tabBar：首页、消息、联系我们
     
-    页面配置
+    页面配置：常用项
+        navigationBarBackgroundColor、navigationBarTextStyle、enablePullDownRefresh、onReachBottomDistance
+        mp_02 -> pages -> message -> message.json配置  message页面配置项 
+        不一定要全部配置下拉刷新、有的页面不需要下拉刷新功能
+    
+    网络数据请求(出于安全性,限制)
+        1、只能请求https类型的接口
+        2、必须将接口的域名添加到信任列表中
+    配置request合法域名
+        需求描述：假设自己的微信小程序中，希望请求https://www.escook.cn/ 域名下的接口
+        配置步骤: 登陆微信小程序管理后台、开发、开发设置、服务器域名、修改request合法域名
+    配置request合法域名
+        
+
+
+Day03:
