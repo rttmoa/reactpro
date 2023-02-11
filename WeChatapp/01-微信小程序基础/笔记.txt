@@ -55,5 +55,16 @@ Day03:
     能够知道如何实现上拉加载更多效果
     能够知道小程序中常用的声明周期函数
 
+    mp_03
+    页面导航：
+        声明式导航
+            1、导航到tarBar页面
+            2、导航跳转到非tabBar页面
+            3、后退导航 <navigator open-type='navigateBack' delta='1'>返回上一页</navigator>
+        编程式导航
+            1、导航到tarBar页面
+            2、导航跳转到非tabBar页面
+            3、后退导航
 
-
+    
+    1-8

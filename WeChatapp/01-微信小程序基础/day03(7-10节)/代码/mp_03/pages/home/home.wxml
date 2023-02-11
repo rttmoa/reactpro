@@ -1,0 +1,23 @@
+<!--pages/home/home.wxml-->
+<text>pages/home/home.wxml</text>
+
+
+
+
+
+
+<!-- 声明式导航跳转 -->
+<navigator url="/pages/message/message" open-type="switchTab">导航到消息页面</navigator>
+<navigator url="/pages/info/info" open-type="navigate">导航到info页面</navigator>
+
+<!-- 编程式导航跳转 -->
+<button bindtap="gotoMessage">跳转到message页面</button>
+<button bindtap="gotoInfo">跳转到info页面</button>
+
+
+<!-- 导航传参 -->
+<navigator url="/pages/info/info?name=zs&age=20">跳转到info页面</navigator>
+<button bindtap="gotoInfo2">跳转到info页面</button>
+
+
+<view class="box"></view>
