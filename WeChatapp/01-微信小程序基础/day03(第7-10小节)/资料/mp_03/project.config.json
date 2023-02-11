@@ -18,9 +18,9 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.1",
-	"appid": "wxf6e0a4e21d109342",
-	"projectname": "local_life",
+	"libVersion": "2.11.2",
+	"appid": "wx5eda4566d93729d6",
+	"projectname": "mp_03",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

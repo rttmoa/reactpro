@@ -1,46 +1,18 @@
-// pages/home/home.js
+// pages/contact/contact.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 存放轮播图数据的列表   {id, image, link}
-    swiperList: [],
-    // 存放九宫格数据的列表   {id, icon, name}
-    gridList: [],      
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSwiperList()
-    this.getGridList()
-  },
 
-  // 获取轮播图数据的方法
-  getSwiperList() {
-    wx.request({
-      url: 'https://www.escook.cn/slides',
-      method: 'GET',
-      success: (res) => {
-        // console.log(res.data) // {id, image, link}
-        this.setData({ swiperList: res.data })
-      }
-    })
-  },
-
-  // 获取九宫格数据的方法
-  getGridList() {
-    wx.request({
-      url: 'https://www.escook.cn/categories',
-      method: 'GET',
-      success: (res) => {
-        console.log(res.data) // {id, icon, name}
-        this.setData({ gridList: res.data })
-      }
-    })
   },
 
   /**

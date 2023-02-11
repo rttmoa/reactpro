@@ -5,10 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 存放轮播图数据的列表   {id, image, link}
+    // 存放轮播图数据的列表
     swiperList: [],
-    // 存放九宫格数据的列表   {id, icon, name}
-    gridList: [],      
+    // 存放九宫格数据的列表
+    gridList: []
   },
 
   /**
@@ -25,8 +25,9 @@ Page({
       url: 'https://www.escook.cn/slides',
       method: 'GET',
       success: (res) => {
-        // console.log(res.data) // {id, image, link}
-        this.setData({ swiperList: res.data })
+        this.setData({
+          swiperList: res.data
+        })
       }
     })
   },
@@ -37,8 +38,9 @@ Page({
       url: 'https://www.escook.cn/categories',
       method: 'GET',
       success: (res) => {
-        console.log(res.data) // {id, icon, name}
-        this.setData({ gridList: res.data })
+        this.setData({
+          gridList: res.data
+        })
       }
     })
   },
