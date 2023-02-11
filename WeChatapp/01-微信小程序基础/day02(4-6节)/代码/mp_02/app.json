@@ -12,7 +12,8 @@
     "navigationBarBackgroundColor": "#2b4b6b",
     "navigationBarTitleText": "黑马程序员",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#efefef",
+    "enablePullDownRefresh": true, 
+    "backgroundColor": "#efefef", 
     "onReachBottomDistance": 100
   },
   "tabBar": {
