@@ -32,7 +32,7 @@ Component({
     }
   },
   observers: {
-    'n1, n2': function (newN1, newN2) {
+    'n1, n2': function (newN1, newN2) {   // "字段A, 字段B": function(字段A的新值, 字段B的新值) {}
       this.setData({
         sum: newN1 + newN2
       })
