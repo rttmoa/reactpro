@@ -4,13 +4,16 @@
     <!-- <my-search :bgcolor="'pink'" :radius="3"></my-search> -->
     <my-search @click="gotoSearch"></my-search>
 
+
     <view class="scroll-view-container">
+
       <!-- 左侧的滑动区域 -->
       <scroll-view class="left-scroll-view" scroll-y="true" :style="{height: wh + 'px'}">
         <block v-for="(item, i) in cateList" :key="i">
           <view :class="['left-scroll-view-item', i === active ? 'active' : '']" @click="activeChanged(i)">{{item.cat_name}}</view>
         </block>
       </scroll-view>
+
       <!-- 右侧的滑动区域 -->
       <scroll-view scroll-y="true" :style="{height: wh + 'px'}" :scroll-top="scrollTop">
         <view class="cate-lv2" v-for="(item2, i2) in cateLevel2" :key="i2">
@@ -28,6 +31,7 @@
           </view>
         </view>
       </scroll-view>
+
     </view>
   </view>
 </template>
@@ -88,9 +92,12 @@
 </script>
 
 <style lang="scss">
+
+  <!-- 左右两个滚动的大盒子 -->
   .scroll-view-container {
     display: flex;
 
+    <!-- 左侧盒子 -->
     .left-scroll-view {
       width: 120px;
 

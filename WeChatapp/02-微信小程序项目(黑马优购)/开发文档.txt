@@ -4,12 +4,15 @@
 
 
 
+线上开发文档：https://www.escook.cn/docs-uni-shop/
+
+要求：最终uni-app2包中是否包含以前学习过的内容(查看文件名)
+
+文件课程名：也就是前端开发过程
 
 
-
-
-Day01:
-
+Day01(1-2): 
+    xxx
     1、安装HBuilder X
     2、下载Scss插件：https://ext.dcloud.net.cn/?cat1=1&cat2=11
     3、导入uni-app项目
@@ -20,3 +23,18 @@ Day01:
     8、uni-app中使用request-miniprogram发起网络请求：https://www.npmjs.com/package/request-miniprogram
     9、开始写Home页面
     10、app.json中配置分包结构
+    11、封装uni.$showMsg
+    
+    首页功能实现：https://www.escook.cn/docs-uni-shop/mds/3.home.html#_3-%E9%A6%96%E9%A1%B5
+        首页-轮播图
+        首页-分类导航 
+        首页-楼层区域
+            双循环渲染左侧和右侧盒子
+            楼层数据getFloorList双forEach处理
+        main合并Home分支、main将本地仓库推倒云端、并删掉Home分支
+
+
+Day02(3-5): 
+    xxx
+    1、分类页面功能实现：
+        

@@ -11,29 +11,35 @@
       </swiper-item>
     </swiper>
 
-    <!-- 分类导航区域 -->
+    <!-- 分类导航区域：分类、秒杀拍、超市购、母婴品 -->
     <view class="nav-list">
       <view class="nav-item" v-for="(item, i) in navList" :key="i" @click="navClickHandler(item)">
-        <image :src="item.image_src" class="nav-img"></image>
+        <image :src="item.image_src" class="nav-img">
+        </image>
       </view>
     </view>
 
-    <!-- 楼层区域 -->
+    <!-- 楼层区域：时尚女装、户外运动、箱包配饰 -->
     <!-- 楼层的容器 -->
     <view class="floor-list">
       <!-- 每一个楼层的 item 项 -->
       <view class="floor-item" v-for="(item, i) in floorList" :key="i">
+
         <!-- 楼层的标题 -->
         <image :src="item.floor_title.image_src" class="floor-title"></image>
+
         <!-- 楼层的图片区域 -->
         <view class="floor-img-box">
           <!-- 左侧大图片的盒子 -->
           <navigator class="left-img-box" :url="item.product_list[0].url">
-            <image :src="item.product_list[0].image_src" :style="{width: item.product_list[0].image_width + 'rpx'}" mode="widthFix"></image>
+            <image :src="item.product_list[0].image_src" :style="{width: item.product_list[0].image_width + 'rpx'}" mode="widthFix">
+            </image>
           </navigator>
+
           <!-- 右侧 4 个小图片的盒子 -->
           <view class="right-img-box">
-            <navigator class="right-img-item" v-for="(item2, i2) in item.product_list" :key="i2" v-if="i2 !== 0" :url="item2.url">
+            <!-- 不让渲染数组第一项 arr[0] 被隐藏掉就好了 -->
+            <navigator class="right-img-item" v-for="(item2, index2) in item.product_list" :key="index2" v-if="index2 !== 0" :url="item2.url">
               <image :src="item2.image_src" :style="{width: item2.image_width + 'rpx'}" mode="widthFix"></image>
             </navigator>
           </view>
@@ -77,7 +83,7 @@
       navClickHandler(item) {
         if (item.name === '分类') {
           uni.switchTab({
-            url: '/pages/cate/cate'
+            url: '/pages/cate/cate',   // 跳转到分类页面
           })
         }
       },
@@ -99,6 +105,7 @@
 </script>
 
 <style lang="scss">
+  <!-- 轮播图区域 -->
   swiper {
     height: 330rpx; 强制高度
 
@@ -109,6 +116,8 @@
     }
   }
 
+
+  <!-- 分类导航区域 -->
   .nav-list {
     display: flex;
     justify-content: space-around;
@@ -120,6 +129,7 @@
     }
   }
 
+  <!-- 楼层区域 -->
   .floor-title {
     width: 100%;
     height: 60rpx;
