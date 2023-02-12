@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+Day01:
+
+    1、安装HBuilder X
+    2、下载Scss插件：https://ext.dcloud.net.cn/?cat1=1&cat2=11
+    3、导入uni-app项目
+    4、git忽略文件：.gitignore
+    5、git追踪文件：.gitkeep
+    6、项目托管到马云上
+    7、 合并分支：https://www.escook.cn/docs-uni-shop/mds/2.tabbar.html#_2-5-%E5%88%86%E6%94%AF%E7%9A%84%E6%8F%90%E4%BA%A4%E4%B8%8E%E5%90%88%E5%B9%B6
+    8、uni-app中使用request-miniprogram发起网络请求：https://www.npmjs.com/package/request-miniprogram
+    9、开始写Home页面
+    10、app.json中配置分包结构
