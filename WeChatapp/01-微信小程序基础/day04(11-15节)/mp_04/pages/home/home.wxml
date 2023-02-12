@@ -1,22 +1,17 @@
 <!--pages/home/home.wxml-->
 
 
-
 <!-- <text class="g-red-text">pages/home/home.wxml</text>
-
 
 
 <view></view>
 <my-test1 max="9"></my-test1> -->
 
 
-
 <!-- <my-test2></my-test2> -->
 
 
-
 <!-- <my-test3></my-test3> -->
-
 
 
 <!-- <my-test4>
@@ -26,11 +21,18 @@
 
 
 
+<!-- 子传父 -->
 <my-test5 count="{{count}}" bind:sync="syncCount" class="customA" id="cA"></my-test5>
 
 
 
 <view>~~~~~~~</view>
 
+<!-- 父传子 -->
+<!-- 父组件中传递count、传递给test5js -->
+<!-- test5通过properties接收count -->
+<!-- test5展示<view>子组件中, count值是: {{count}}</view> -->
+<my-test5 count="{{count}}"></my-test5>
 <view>父组件中, count值是: {{count}}</view>
+
 <button bindtap="getChild">获取子组件的实例对象</button>

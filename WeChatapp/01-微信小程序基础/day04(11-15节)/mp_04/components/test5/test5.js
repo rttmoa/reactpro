@@ -6,7 +6,7 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {
+  properties: { // 外来属性 count
     count: Number
   },
 
@@ -21,12 +21,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
+    // 子组件 count +1
     addCount() {
-      this.setData({
-        count: this.properties.count + 1
-      })
+      this.setData({ count: this.properties.count + 1 })
+
       // 触发自定义事件，将数值同步给父组件
-      this.triggerEvent('sync', { value: this.properties.count })
+      this.triggerEvent('sync', { value: this.properties.count })  // 子传父
     }
   }
 })

@@ -152,4 +152,16 @@ Day04:
             6.9、组件所在页面的生命周期：
                 3.生成随机的RGB颜色值
             6.10 插槽(<slot>)
-                
+                 options: { multipleSlots: true,   // 使用多个插槽 },
+            6.11、父子组件之间的通信(homejs ~test5js)
+                通信的三种方式
+                    属性绑定
+                    事件绑定
+                    获取组件实例
+                        父传子
+                            父组件中传递count、传递给test5js
+                            test5通过properties接收count
+                            test5展示<view>子组件中, count值是: {{count}}</view>
+                        子传父
+                            在子组件js中，通过调用this.triggerEvent('自定义事件名称', { / 参数对象 / })  将数据发送到父组件
+            6

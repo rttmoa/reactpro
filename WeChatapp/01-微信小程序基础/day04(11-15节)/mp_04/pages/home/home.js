@@ -1,6 +1,9 @@
 // pages/home/home.js
 Page({
 
+
+
+
   /**
    * 页面的初始数据
    */
@@ -12,19 +15,27 @@ Page({
     // console.log('syncCount')
     // console.log(e)
     // console.log(e.detail.value)
-    this.setData({
-      count: e.detail.value
-    })
+    this.setData({ count: e.detail.value }) // 接收子传来的count
   },
 
   getChild() {
     const child = this.selectComponent('#cA')
     console.log(child)
+
     // child.setData({
     //   count: child.properties.count + 1
     // })
+
     child.addCount()
   },
+
+
+
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面加载
