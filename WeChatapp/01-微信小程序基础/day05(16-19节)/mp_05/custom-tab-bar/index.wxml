@@ -1,0 +1,20 @@
+<!--custom-tab-bar/index.wxml-->
+
+
+<!-- 这是自定义的tarBar	 -->
+
+
+<!-- tabbar： https://youzan.github.io/vant-weapp/#/tabbar -->
+<!-- tabBar自定义图标：https://youzan.github.io/vant-weapp/#/tabbar#zi-ding-yi-tu-biao -->
+
+<!-- 循环的list数组 -->
+<!-- 按需渲染灰标 -->
+<!-- 修改选中徽标的颜色(active-color)：https://youzan.github.io/vant-weapp/#/tabbar#api -->
+
+<van-tabbar active="{{active}}" bind:change="onChange" active-color="#13A7A0">
+	<van-tabbar-item wx:for="{{list}}" wx:key="index" info="{{item.info ? item.info : ''}}">
+		<image slot="icon" src="{{item.iconPath}}" mode="aspectFit" style="width: 25px; height: 25px;" />
+		<image slot="icon-active" src="{{item.selectedIconPath}}" mode="aspectFit" style="width: 25px; height: 25px;" />
+		{{item.text}}
+	</van-tabbar-item>
+</van-tabbar> 
