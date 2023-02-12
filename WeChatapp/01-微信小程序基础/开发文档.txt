@@ -132,6 +132,14 @@ Day04:
         3、全局引用 & 局部引用
             3.1、全局在app.json中引用
             3.2、局部在每个page中指定才可引用
-        4、全局引用 VS 局部引用
+        4、全局引用 VS 局部引用????
         
-        1-11 05
+        5、组件和页面的区别：component|page
+        6、自定义组件样式
+            6.1、组件样式隔离
+            6.4、数据、方法和属性：data和properties的区别
+                data更倾向于存储组件的私有数据
+                properties更倾向于存储外界传递到组件中的数据
+            6.5、使用setData修改properties的值
+                data和properties的值都是可读可写的
+            6.6、数据监听器(obserbers:{})

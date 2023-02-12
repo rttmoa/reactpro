@@ -35,9 +35,9 @@ Component({
         max: this.properties.max + 1
       })
 
-      this._showCount()
+      this._showCount() // 通过this调用自定义方法
     },
-    _showCount() {
+    _showCount() { // 自定义方法建议用 _ 开头
       wx.showToast({
         title: 'count是' + this.data.count,
         icon: 'none'
