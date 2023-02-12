@@ -148,4 +148,6 @@ Day04:
                 监听对象(/component/test3js)
             6.7、纯数据字段(pureDataPattern)
                 选中全部rgb，Ctrl一直按住，移动鼠标，Ctrl+D、改变rgb即可
-            6.8、
+            6.8、组件的生命周期函数(/created/attached/ready/moved/detached/error)
+            6.9、组件所在页面的生命周期：
+                3.生成随机的RGB颜色值

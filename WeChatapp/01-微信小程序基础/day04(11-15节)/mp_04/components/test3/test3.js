@@ -70,6 +70,7 @@ Component({
     }
   },
 
+  // 旧生命周期 ~ 不推荐
   // created() {
   //   console.log('created')
   // },
@@ -77,6 +78,7 @@ Component({
   //   console.log('attached')
   // },
 
+  // 新生命周期 ~ 推荐
   lifetimes: {
     created() {
       console.log('created ~~~~~')
@@ -86,7 +88,7 @@ Component({
     },
   },
 
-  pageLifetimes: {
+  pageLifetimes: { // 所在的页面(Home)的生命周期      ~    显示、隐藏、尺寸变化
     show() {
       console.log('show')
       this._randomColor()
