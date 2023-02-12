@@ -155,13 +155,13 @@ Day04:
                  options: { multipleSlots: true,   // 使用多个插槽 },
             6.11、父子组件之间的通信(homejs ~test5js)
                 通信的三种方式
-                    属性绑定
-                    事件绑定
-                    获取组件实例
+                    1.属性绑定
+                    2.事件绑定
                         父传子
                             父组件中传递count、传递给test5js
                             test5通过properties接收count
                             test5展示<view>子组件中, count值是: {{count}}</view>
                         子传父
                             在子组件js中，通过调用this.triggerEvent('自定义事件名称', { / 参数对象 / })  将数据发送到父组件
-            6
+                    3.获取组件实例(this.selectComponent("id/class选择器")) 
+            6.12、behaviors：每个behavior可以包含一组属性，数据，生命周期函数和方法

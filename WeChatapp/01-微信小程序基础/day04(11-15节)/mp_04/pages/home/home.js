@@ -19,12 +19,12 @@ Page({
   },
 
   getChild() {
-    const child = this.selectComponent('#cA')
+
+    // const child = this.selectComponent('.customA')
+    const child = this.selectComponent('#cA') // 返回子组件实例
     console.log(child)
 
-    // child.setData({
-    //   count: child.properties.count + 1
-    // })
+    // child.setData({ count: child.properties.count + 1 })  // 给子组件赋值
 
     child.addCount()
   },
