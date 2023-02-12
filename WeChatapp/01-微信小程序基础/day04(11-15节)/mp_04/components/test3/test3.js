@@ -44,7 +44,7 @@ Component({
         '_rgb.b': this.data._rgb.b + 5 > 255 ? 255 : this.data._rgb.b + 5
       })
     },
-    _randomColor() {
+    _randomColor() {  // 随机生成颜色
       this.setData({
         _rgb: {
           r: Math.floor(Math.random() * 256),
