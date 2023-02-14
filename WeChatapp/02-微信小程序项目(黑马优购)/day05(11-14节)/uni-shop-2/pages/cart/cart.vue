@@ -1,4 +1,5 @@
 <template>
+
   <view class="cart-container" v-if="cart.length !== 0">
     <!-- 收货地址组件 -->
     <my-address></my-address>
