@@ -1,6 +1,8 @@
 <template>
 
+
   <view class="cart-container" v-if="cart.length !== 0">
+  
     <!-- 收货地址组件 -->
     <my-address></my-address>
 
@@ -18,7 +20,7 @@
         <uni-swipe-action-item :options="options" @click="swipeItemClickHandler(goods)">
           <my-goods :goods="goods" :show-radio="true" :show-num="true" @radio-change="radioChangeHandler" @num-change="numberChangeHandler"></my-goods>
         </uni-swipe-action-item>
-      </block>
+      </block> 
     </uni-swipe-action>
 
     <!-- 使用自定义的结算组件 -->
@@ -31,14 +33,23 @@
     <text class="tip-text">空空如也~</text>
   </view>
 </template>
-
+<!-- 
+   购物车：
+    1、渲染购物车数据(通过mapState函数，将Store中的cart数组映射到当前页面中使用)
+    2、
+ -->
 <script>
   import badgeMix from '@/mixins/tabbar-badge.js'
   import { mapState, mapMutations } from 'vuex'
 
   export default {
+
+    // 将 badgeMin 混入打当前页面中进行使用
     mixins: [badgeMix],
+    // 计算属性
     computed: {
+      // 调用 mapState方法，把 m_cart 模块中的cart数组映射到当前页面中，作为计算属性来使用
+      // ...mapState('模块名称', ['要映射的数据名称1', '要映射的数据名称2'])
       ...mapState('m_cart', ['cart'])
     },
     data() {
