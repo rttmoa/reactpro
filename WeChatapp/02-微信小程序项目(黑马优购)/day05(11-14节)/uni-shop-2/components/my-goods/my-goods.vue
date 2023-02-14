@@ -1,15 +1,19 @@
 <template>
+
   <view class="goods-item">
+
     <!-- 左侧的盒子 -->
     <view class="goods-item-left">
       <radio :checked="goods.goods_state" color="#C00000" v-if="showRadio" @click="radioClickHandler"></radio>
       <image :src="goods.goods_small_logo || defaultPic" class="goods-pic"></image>
     </view>
+
     <!-- 右侧的盒子 -->
     <view class="goods-item-right">
       <!-- 商品的名字 -->
       <view class="goods-name">{{goods.goods_name}}</view>
       <view class="goods-info-box">
+        <!-- 在渲染商品价格的时候，通过管道符 | 调用过滤器 filters: { toFixed () {}} -->
         <view class="goods-price">￥{{goods.goods_price | tofixed}}</view>
         <uni-number-box :min="1" :value="goods.goods_count" v-if="showNum" @change="numChangeHandler"></uni-number-box>
       </view>
@@ -40,6 +44,7 @@
         defaultPic: 'https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png'
       };
     },
+    过滤器
     filters: {
       tofixed(num) {
         return Number(num).toFixed(2)
