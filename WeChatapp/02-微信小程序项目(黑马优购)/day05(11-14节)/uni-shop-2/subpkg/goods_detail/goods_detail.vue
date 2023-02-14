@@ -1,4 +1,6 @@
 <template>
+
+
   <view v-if="goods_info.goods_name" class="goods-detail-container">
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
@@ -25,10 +27,17 @@
       <view class="yf">快递：免运费</view>
     </view>
 
+    <!-- 渲染后台返回的HTML元素 -->
+    <!-- https://uniapp.dcloud.net.cn/component/rich-text.html -->
     <rich-text :nodes="goods_info.goods_introduce"></rich-text>
 
     <!-- 商品导航组件区域 -->
     <view class="goods_nav">
+      <!-- fill 控制右侧按钮的样式 -->
+      <!-- options 左侧按钮的配置项 -->
+      <!-- buttonGroup 右侧按钮的配置项 -->
+      <!-- click 左侧按钮的点击事件处理函数 -->
+      <!-- buttonCilck 右侧按钮的点击事件处理函数 -->
       <uni-goods-nav :fill="true" :options="options" :buttonGroup="buttonGroup" @click="onClick" @buttonClick="buttonClick" />
     </view>
   </view>
@@ -98,16 +107,23 @@
         const { data: res } = await uni.$http.get('/api/public/v1/goods/detail', { goods_id })
         if (res.meta.status !== 200) return uni.$showMsg()
 
-        res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display:block;" ').replace(/webp/g, 'jpg')
+        // 处理后重新赋值：目的是解决图片底部空白间隙
+        res.message.goods_introduce = 
+        res.message.goods_introduce.replace(/<img /g, '<img style="display:block;" ').replace(/webp/g, 'jpg')
 
         this.goods_info = res.message
 
-        // <img style=\"display:block;\" data-src=\"//image.suning.cn/uimg/sop/commodity/966602987133443585157120_x.jpg?from=mobile&amp;format=80q.webp\" alt=\"\" src=\"//image.suning.cn/uimg/sop/commodity/966602987133443585157120_x.jpg?from=mobile&format=80q.webp\" width=\"100%\" height=\"auto\">
+        // webp格式在ios设备上显示不出
+        // <img style=\"display:block;\" data-src=\"//image.suning.cn/uimg/sop/commodity/966602987133443585157120_x.jpg?from=mobile&amp;format=80q.webp\" alt=\"\" 
+          // src=\"//image.suning.cn/uimg/sop/commodity/966602987133443585157120_x.jpg?from=mobile&format=80q.webp\" width=\"100%\" height=\"auto\">
       },
+      // 实现轮播图的大图预览功能
       preview(i) {
-        uni.previewImage({
+        uni.previewImage({ // 大图预览
+          // 预览时，默认显示图片的索引 
           current: i,
-          urls: this.goods_info.pics.map(x => x.pics_big)
+          // 所有图片 url 地址的数组
+          urls: this.goods_info.pics.map(x => x.pics_big), // 即 urls中是要预览的图片
         })
       },
       onClick(e) {
