@@ -61,6 +61,7 @@
     },
     data() {
       return {
+        // 商品详情对象
         goods_info: {},
         options: [{
           icon: 'shop',
@@ -87,10 +88,12 @@
     },
     onLoad(options) {
       const goods_id = options.goods_id
-      this.getGoodsDetail(goods_id)
+      this.getGoodsDetail(goods_id);    // 根据商品详情页Id 去发请求
     },
     methods: {
       ...mapMutations('m_cart', ['addToCart']),
+
+      // 获取商品详情数据
       async getGoodsDetail(goods_id) {
         const { data: res } = await uni.$http.get('/api/public/v1/goods/detail', { goods_id })
         if (res.meta.status !== 200) return uni.$showMsg()
