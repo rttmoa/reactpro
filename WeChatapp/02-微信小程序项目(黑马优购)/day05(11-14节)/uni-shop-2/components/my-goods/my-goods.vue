@@ -44,7 +44,7 @@
         defaultPic: 'https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png'
       };
     },
-    过滤器
+    // 过滤器
     filters: {
       tofixed(num) {
         return Number(num).toFixed(2)
