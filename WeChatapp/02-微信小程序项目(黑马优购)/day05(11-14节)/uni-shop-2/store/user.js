@@ -20,25 +20,30 @@ export default {
 
       this.commit('m_user/saveAddressToStorage')
     },
-    // 持久化存储 address
+  // 持久化存储 address
     saveAddressToStorage(state) {
       uni.setStorageSync('address', JSON.stringify(state.address))
     },
+	// 用户信息 存储到vuex中
     updateUserInfo(state, userinfo) {
       state.userinfo = userinfo
 
       this.commit('m_user/saveUserInfoToStorage')
     },
+	// 本地持久化存储
     saveUserInfoToStorage(state) {
       uni.setStorageSync('userinfo', JSON.stringify(state.userinfo))
     },
+	// token 保存到 vuex 中
     updateToken(state, token) {
       state.token = token
       this.commit('m_user/saveTokenToStorage')
     },
+	// 本地持久化存储
     saveTokenToStorage(state) {
       uni.setStorageSync('token', state.token)
     },
+  // 记录结算跳转到登陆页的信息
     updateRedirectInfo(state, info) {
       state.redirectInfo = info
       console.log(state.redirectInfo)

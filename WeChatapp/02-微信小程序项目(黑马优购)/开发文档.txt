@@ -139,6 +139,24 @@ Day03(6-7):
         
 Day04(8-10):
     xxx
-    加入购物车
+    加入购物车：
         1、配置Vuex
-        2、
+        2、创建购物车是Store模块
+        3、在商品详情页中使用Store模块
+
+        // mapMutations 的返回值通过展开运算符交给methods节点
+        // 把 m_cart 模块中的 addToCart 方法映射到当前页面使用
+        methods: { ...mapMutations('m_cart', ['addToCart']) }
+
+    购物车页面：
+        2、为 my-goods 组件封装radio勾选状态
+
+
+
+2-9 - 05节
+
+
+
+
+Day05:
+    登陆与支付 - 用户信息 - 用户页面的渲染及CSS美化

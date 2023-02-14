@@ -48,23 +48,31 @@
 
   export default {
     computed: {
+      // mapState/mapGetters的返回值通过展开运算符交给计算属性computed
       ...mapState('m_cart', []),
-      ...mapGetters('m_cart', ['total'])
+      ...mapGetters('m_cart', ['total']),  // 把 m_cart 模块中名称为total的getter映射到当前页面中使用
     },
     watch: {
+      // 使用普通函数的形式定义的 watch 侦听器，在页面首次加载后不会被调用
       // total(newVal) {
       //   const findResult = this.options.find(x => x.text === '购物车')
       //   if (findResult) {
       //     findResult.info = newVal
       //   }
       // }
+      
+      // 解决：可以使用对象的形式来定义 watch 侦听器
       total: {
+        // 1、通过监听total值的变化，通过第一个形参得到变化后的新值  -- handler是侦听器的处理函数
         handler(newVal) {
+          // 2、通过数组的find方法，找到购物车按钮的配置对象
           const findResult = this.options.find(x => x.text === '购物车')
           if (findResult) {
+            // 3、动态为购物车按钮的info属性赋值
             findResult.info = newVal
           }
         },
+        // immediate 属性用来声明此侦听器，是否在页面初次加载完毕后立即调用
         immediate: true
       }
     },
@@ -101,6 +109,8 @@
       this.getGoodsDetail(goods_id);    // 根据商品详情页Id 去发请求
     },
     methods: {
+      // mapMutations 的返回值通过展开运算符交给methods节点
+      // 把 m_cart 模块中的 addToCart 方法映射到当前页面使用
       ...mapMutations('m_cart', ['addToCart']),
 
       // 获取商品详情数据
