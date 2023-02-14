@@ -1,6 +1,7 @@
 <template>
   <view>
     <!-- 搜索组件 -->
+    <!-- 吸顶效果： position: sticky、top:0 、 z-index: 999   -->
     <view class="search-box">
       <my-search @click="gotoSearch"></my-search>
     </view>
@@ -108,7 +109,7 @@
         // 对数据进行处理
         res.message.forEach(floor => {
           floor.product_list.forEach(prod => {
-            prod.url = '/subpkg/goods_list/goods_list?' + prod.navigator_url.split('?')[1], // 由于后台给的数据格式不对
+            prod.url = '/subpkg/goods_list/goods_list?' + prod.navigator_url.split('?')[1]; // 由于后台给的数据格式不对
           })
         })
         this.floorList = res.message
@@ -124,7 +125,7 @@
 
 <style lang="scss">
 
-  <!-- 轮播图区域 -->
+
   swiper {
     height: 330rpx;
 
@@ -136,7 +137,8 @@
   }
 
 
-  <!-- 分类导航区域 -->
+
+
   .nav-list {
     display: flex;
     justify-content: space-around;
@@ -149,7 +151,8 @@
   }
 
 
-  <!-- 楼层区域 -->
+
+
   .floor-title {
     width: 100%;
     height: 60rpx;
@@ -167,7 +170,8 @@
   }
   
 
-  <!-- 顶部搜索 -->
+
+
   .search-box {
     position: sticky;
     top: 0;
