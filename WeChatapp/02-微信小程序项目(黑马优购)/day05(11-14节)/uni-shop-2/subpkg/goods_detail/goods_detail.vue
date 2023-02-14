@@ -72,6 +72,7 @@
       return {
         // 商品详情对象
         goods_info: {},
+        // 商品导航组件按钮配置对象 
         options: [{
           icon: 'shop',
           text: '店铺',
@@ -202,11 +203,13 @@
     }
   }
 
+  // 底部加入购物车 固定定位
   .goods_nav {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    // 让元素占整个屏幕宽度
+    width: 100%; 
   }
 
   .goods-detail-container {
