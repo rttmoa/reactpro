@@ -1,11 +1,14 @@
 <template>
+
   <view class="my-userinfo-container">
+
     <!-- 头像和昵称区域 -->
     <view class="top-box">
       <image :src="userinfo.avatarUrl" class="avatar"></image>
       <view class="nickname">{{userinfo.nickName}}</view>
     </view>
 
+    <!-- 先分析结构：一个大盒子包裹三个子盒子 -->
     <!-- 面板区域 -->
     <view class="panel-list">
       <!-- 第1个面板 -->
@@ -73,28 +76,30 @@
     </view>
   </view>
 </template>
-
+<!-- 
+  用户信息：
+    1、用户信息页面渲染
+    2、用户退出功能
+ -->
+ 
 <script>
   import { mapState, mapMutations } from 'vuex'
 
   export default {
     data() {
-      return {
-
-      };
+      return {}; 
     },
     computed: {
       ...mapState('m_user', ['userinfo'])
     },
     methods: {
+
+      // 使用mapMutations辅助方法，将需要用到的mutations方法映射到当前组件中
       ...mapMutations('m_user', ['updateAddress', 'updateUserInfo', 'updateToken']),
       async logout() {
-        const [err, succ] = await uni.showModal({
-          title: '提示',
-          content: '确认退出登录吗？'
-        }).catch(err => err)
+        const [err, succ] = await uni.showModal({ title: '提示', content: '确认退出登录吗？'}).catch(err => err)
 
-        if (succ && succ.confirm) {
+        if (succ && succ.confirm) { 
           this.updateAddress({})
           this.updateUserInfo({})
           this.updateToken('')
@@ -105,10 +110,12 @@
 </script>
 
 <style lang="scss">
+  // 父容器要100% 高度才行
   .my-userinfo-container {
     height: 100%;
     background-color: #F4F4F4;
 
+    // 红色区域
     .top-box {
       height: 400rpx;
       background-color: #C00000;
@@ -174,7 +181,9 @@
 
   .panel-list-item {
     display: flex;
+    // 左右两端对齐
     justify-content: space-between;
+    // 垂直居中
     align-items: center;
     font-size: 15px;
     padding: 0 10px;
