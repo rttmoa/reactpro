@@ -47,8 +47,9 @@
         if (!this.checkedCount) return uni.$showMsg('请选择要结算的商品！')
 
         if (!this.addstr) return uni.$showMsg('请选择收货地址！')
-
+  
         // if (!this.token) return uni.$showMsg('请先登录！')
+
         if (!this.token) return this.delayNavigate()
 
         this.payOrder()
@@ -97,8 +98,9 @@
           icon: 'success'
         })
       },
-      // 延时导航到 my 页面
-      delayNavigate() {
+      /**--- 延时导航到 my 页面 -- 倒计时 ---**/
+      delayNavigate() { 
+        // 每次调用的时候 都将秒数设置为3，否则秒数会越减越少
         this.seconds = 3
 
         this.showTips(this.seconds)
@@ -108,17 +110,20 @@
 
           if (this.seconds <= 0) {
             clearInterval(this.timer)
-
+            // 跳转到my页面
             uni.switchTab({
               url: '/pages/my/my',
               success: () => {
+                // 调用vuex的updateRedirectInfo方法，把跳转信息存储到Store中
                 this.updateRedirectInfo({
+                  // 跳转的方式
                   openType: 'switchTab',
+                  // 从哪个页面跳转过去的
                   from: '/pages/cart/cart'
                 })
               }
             })
-
+            // 返回出去 不会再执行函数
             return
           }
 

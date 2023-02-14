@@ -11,15 +11,19 @@ export default {
   mutations: {
     addToCart(state, goods) {
       const findResult = state.cart.find(x => x.goods_id === goods.goods_id)
+      // console.log(findResult)
 
       if (!findResult) {
         state.cart.push(goods)
       } else {
         findResult.goods_count++
       }
+      // console.log(state.cart)
 
+      // 通过 commit 方法，调用m_cart命名空间下的 saveToStoreage方法
       this.commit('m_cart/saveToStorage')
     },
+    // 将购物车中的数据持久化存储到本地
     saveToStorage(state) {
       uni.setStorageSync('cart', JSON.stringify(state.cart))
     },
@@ -64,6 +68,7 @@ export default {
       // state.cart.forEach(x => c += x.goods_count)
       // return c
 
+      // 循环统计商品的数量，累加到变量 c 中
       return state.cart.reduce((total, item) => total += item.goods_count, 0)
     },
     // 购物车中已勾选商品的总数量
