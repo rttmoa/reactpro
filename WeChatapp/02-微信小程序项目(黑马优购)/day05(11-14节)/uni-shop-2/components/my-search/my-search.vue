@@ -1,4 +1,6 @@
 <template>
+
+
   <view class="my-search-container" :style="{ 'background-color': bgcolor }" @click="searchBoxHandler">
     <view class="my-search-box" :style="{ 'border-radius': radius + 'px' }">
       <!-- 使用 uni-ui 提供的图标组件 -->
@@ -6,6 +8,7 @@
       <text class="placeholder">搜索</text>
     </view>
   </view>
+
 </template>
 
 <script>
@@ -28,9 +31,7 @@
       }
     },
     methods: {
-      searchBoxHandler() {
-        this.$emit('click')
-      }
+      searchBoxHandler() { this.$emit('click') }
     }
   }
 </script>
@@ -47,6 +48,7 @@
       height: 36px;
       background-color: #FFFFFF;
       // border-radius: 18px;
+      // 给外盒子加强制性宽度
       width: 100%;
       display: flex;
       justify-content: center;
