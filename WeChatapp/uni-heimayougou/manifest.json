@@ -86,6 +86,9 @@
             "urlCheck" : false,
             "checkSiteMap" : false,
             "es6" : false
-        }
+        },
+		"requiredPrivateInfos": [ 
+			"chooseAddress" 
+		]
     }
 }

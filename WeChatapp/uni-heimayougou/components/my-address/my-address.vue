@@ -51,6 +51,8 @@
         // 1、调用小程序提供的 chooseAddress 方法，即可使用选择收货地址的功能
         //  返回值是一个数组，第1项为错误对象，第2项为成功之后的收货地址对象
         const [err, succ] = await uni.chooseAddress().catch(err => err) // 防止方法调用失败 加 .catch()
+		// console.log(err);
+		// console.log(succ);	
         if (err === null && succ.errMsg === 'chooseAddress:ok') {
           // this.address = succ
           // 调用Store中提供的 updateAddress方法，将address保存到Store里面
