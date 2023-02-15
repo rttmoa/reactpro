@@ -1,9 +1,0 @@
-<!--pages/home/home.wxml-->
-
-
-
-
-
-<!-- 全局 自定义主题颜色 -->
-<van-button type="primary" bindtap="getInfo">按钮</van-button>
-<van-button type="danger">按钮</van-button>

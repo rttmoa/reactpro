@@ -1,2 +1,0 @@
-miniprogram_npm
-nodemon_module

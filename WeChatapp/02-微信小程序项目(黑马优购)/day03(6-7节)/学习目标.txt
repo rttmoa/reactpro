@@ -1,5 +1,0 @@
-能够知道如何实现商品列表页面的下拉刷新和上拉加载更多
-能够知道如何使用rich-text组件渲染富文本内容
-能够知道如何在uni-app项目中配置和使用vuex
-能够知道Vue的watch侦听器中immediate属性的作用
-能够知道如何把设置tabBar徽标的代码抽离为mixins
