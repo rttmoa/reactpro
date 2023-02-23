@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // // 全局作用域  全局变量
+        // let a=0;
+
+        // function fn1(){
+        //     // 局部作用域   局部变量
+        //     let  a1=10;
+
+        //     function fn2(){
+        //         let a2=20;
+        //         console.log(a+a1+a2);
+        //     }
+
+        //     fn2();
+        // }
+
+        // // 调用
+        // fn1();
+        // // 在全局作用域没法访问局部作用域的变量，即再函数外部，访问不到函数内部的变量
+        // console.log(a1);
+
+        // 非要这么做？====>通过闭包实现了
+
+        // 函数之间有嵌套关系，内部函数使用了外部函数中的变量，内部函数在函数定义的时候，就形成了闭包
+        var b=100;
+        function fn1() {
+            var a = 10;
+
+            function fn2() {
+                a++;
+                console.log(a);
+                return a;
+            }
+            return fn2;
+        }
+
+        var fn = fn1(); //fn 是函数  ==》fn2
+        fn()  //fn2开始调用
+
+        
+
+        // 闭包的优缺点？应用？
+        // JS垃圾回收机制 GC 
+        // 特点：在JS中，全局定义的属性和方法，不会被GC回收的  
+        // 在局部定义的属性和方法，用完了，就会被回收
+
+        // 作用：
+        // 1、在全局作用域访问到局部作用域的变量
+        // 2、延长了局部的生命周期，不被回收  ===》多了就造成内存泄漏
+        // 3、定时器、点击事件
+        // 4、应用： JQuery 模块化 设计私有的方法和变量 $.
+        
+    
+        // 缺点：===》多了就造成内存泄漏
+
+    </script>
+</body>
+
+</html>

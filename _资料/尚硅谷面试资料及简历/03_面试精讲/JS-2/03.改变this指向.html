@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变this指向</title>
+</head>
+
+<body>
+    <button class="box">点我禁用</button>
+    <script>
+        let obj = {
+            name: 'zs',
+            age: 18
+        }
+
+        function fn1(a, b) {
+            console.log(this); //window
+            console.log(a);
+            console.log(b);
+
+        }
+
+        // fn1();
+        // fn1.call()
+        // fn1.call(obj,1,2)  //=> obj
+
+
+        // fn1.apply(obj,[2,3])
+
+        let fn = fn1.bind(obj, 4, 5)
+        // console.log(fn);
+        fn();
+
+
+        // 改变this指向'
+        // 一、call: 特点：1、函数调用  2、改变this指向   3、后面跟的是参数列表
+
+        // 二、apply : 特点：1、函数调用  2、改变this指向  3、后面跟的必须是数组
+
+        // 三、bind : 特点：1、不能直接函数调用，而是返回一个函数 2、改变this指向   3、后面跟的是参数列表
+
+        // 应用：
+        // call : 继承  子类借用父类的构造函数的时候
+        // apply:
+        // let max= Math.max(2,3,5);
+        // console.log(max);
+        let arr = [2, 4, 6, 7, 8, 12]
+        let max = Math.max.apply(null, arr);
+        console.log(max);
+
+        // bind ：
+        let box = document.querySelector('.box');
+        box.addEventListener('click', function () {
+            // 禁用
+            // console.log(this);
+            this.disabled = true; //禁用
+            // let  that=this; //保存this
+
+            // setTimeout((function () {
+            //     console.log(this);
+            //     this.disabled = false; //启用
+            // }).bind(this), 2000);
+
+            setTimeout(() => {
+                // 为什么箭头函数可以？ 因为箭头函数里没有this,往外找，this =>box
+                this.disabled = false; //启用
+            }, 2000);
+
+        })
+    </script>
+</body>
+
+</html>

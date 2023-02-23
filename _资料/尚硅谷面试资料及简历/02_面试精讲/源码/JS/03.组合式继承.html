@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 方式一: 基于构造函数的继承: 原型链 + 借用构造函数的组合式继承
+        function Person(name, age) {
+            // 2、{} 3、{} 属性放在this
+            this.name = name;
+            this.age = age;
+        }
+        // 方法：放到原型对象上
+        Person.prototype.eat = function () {
+            console.log('吃.....');
+        }
+        let per=new Person('lsssss',19);
+        console.dir(per)
+
+        function Student(name, age, score) {
+            // 借用，子类借用父类的构造函数  this
+            // 关键步骤 1、借用构造函数来实现属性的继承
+            Person.call(this, name, age)
+            this.score = score;
+        }
+        // 关键步骤 2、子类的原型等于父类的实例
+        Student.prototype=new Person();
+        // 关键步骤 3、让子类原型的构造器为子类自己
+        Student.prototype.constructor=Student;
+
+        // 子类重写父类的方法
+        Student.prototype.eat=function(){
+            console.log('stu 吃');
+        }
+        
+        let stu1 = new Student('zs', 18, 99)
+        console.dir(stu1);
+        stu1.eat()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age
+            }
+            // es6 原型上 
+            sayHi() {
+                console.log('hi.....');
+            }
+            // =  实例上
+            eat = () => {
+                console.log('eat');
+            }
+            // =  实例上
+            sleep = function () {
+                console.log('sleep。。。');
+            }
+        }
+        let p1=new Person('zs',18);
+        console.dir(p1)
+
+        // 继承  extends super
+        class Student extends Person{
+            constructor(name,age,score){
+                super(name,age);
+                this.score=score;
+            }
+        }
+        let stu=new Student('ls',19,0)
+        stu.eat();
+        stu.sleep();
+        console.dir(stu)
+
+
+    </script>
+</body>
+
+</html>
