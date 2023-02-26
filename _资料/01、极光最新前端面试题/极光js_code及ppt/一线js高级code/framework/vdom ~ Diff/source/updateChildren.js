@@ -1,3 +1,6 @@
+
+
+
 function updateChildren(vnode, newVnode) {
     var children = vnode.children || []
     var newChildren = newVnode.children || []
