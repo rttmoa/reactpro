@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#boxa{
+				height:100px;
+				width:100px;
+				background-color: #007AFF;
+				position: fixed;
+				left:0;
+				top:0;
+			}
+			#boxb{
+				height:200px;
+				width:200px;
+				background-color: #20B2AA;
+				position: fixed;
+				left:0;
+				top:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="boxa"></div>
+		<div id="boxb"></div>
+		
+		<script>
+		    let html=document.documentElement||document.body;
+			
+			function down(e){//this e.target 区分盒子
+			    this.beginX=e.offsetX;
+				this.beginY=e.offsetY;
+				
+				//用bind来修改this指向---》不会执行函数，将函数整体给变量
+				//不用call,apply---》将函数执行
+				this._move=move.bind(this);
+				this._up=up.bind(this);
+				
+				window.addEventListener("mousemove",this._move)
+				window.addEventListener("mouseup",this._up)
+			}
+			
+			function move(e){
+				//console.log(this);
+				//初始 this默认window
+				//通过修该 this--->盒子元素
+				this.endX=e.clientX;
+				this.endY=e.clientY;
+				
+				this.resultX=this.endX-this.beginX;
+				this.resultY=this.endY-this.beginY;
+				
+				this.maxW=html.clientWidth-this.offsetWidth;
+				this.maxH=html.clientHeight-this.offsetHeight;
+				
+				this.resultX= this.resultX<=0?0:(this.resultX>=this.maxW?this.maxW:this.resultX);
+				this.resultY= this.resultY<=0?0:(this.resultY>=this.maxH?this.maxH:this.resultY);
+				
+				this.style.left=this.resultX+"px";
+				this.style.top=this.resultY+"px";
+			}
+			function up(){
+				window.removeEventListener("mousemove",this._move);
+				window.removeEventListener("mouseup",this._up);
+			}
+			
+			boxa.addEventListener("mousedown",down)
+			boxb.addEventListener("mousedown",down)
+		</script>
+	</body>
+</html>

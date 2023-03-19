@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#pp{
+				height:500px;
+				width:500px;
+				margin-top:100px;
+				margin-left:100px;
+				background-color: blueviolet;
+				overflow: hidden;
+				/* position: relative; */
+			}
+			#parent{
+				height:300px;
+				width:300px;
+				margin-top:100px;
+				margin-left:100px;
+				background-color: pink;
+				overflow: hidden;
+			    /* position: relative; */
+			}
+			#box{
+				height:100px;
+				width:100px;
+				margin-top:100px;
+				margin-left:100px;
+				background-color: aquamarine;
+				/* position: absolute;
+				left:100px;
+				top:100px; */
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pp">
+			<div id="parent">
+				<div id="box"></div>
+			</div>
+		</div>
+		<script>
+			// offsetTop:默认元素距离body顶部距离,
+			//           如果父级(祖先级)元素定位,就是距离最近定位父级(祖先级)元素的顶部距离
+			// offsetLeft:默认元素距离body左侧部距离
+			//          如果父级(祖先级)元素定位,就是距离最近定位父级(祖先级)元素的左侧距离
+			//offsetParent：离它最近的定位的祖先级元素(定位)，（如果没有定位，就是body)	 
+			console.log(box.offsetTop);
+			console.log(box.offsetLeft);
+			console.log(box.offsetParent);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:100px;
+				width:100px;
+				background-color: #AC2925;
+				position: relative;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			let box=document.getElementById("box");
+			let fx,fy;
+			let html=document.documentElement||document.body;
+			let maxW=html.clientWidth-box.offsetWidth;
+			let maxH=html.clientHeight-box.offsetHeight;
+			
+			box.onmousedown=function(e){
+				fx=e.offsetX;
+				fy=e.offsetY;
+				//鼠标移动，盒子移动
+				window.addEventListener("mousemove",move);
+				//鼠标抬起，取消所有事件(移动+抬起)
+				window.addEventListener("mouseup",clear);
+			}
+			
+			function move(e){
+				let newX=e.clientX;
+				let newY=e.clientY;
+				
+				let resultX=newX-fx;
+				let resultY=newY-fy;
+				
+				// if(resultX<=0){
+				// 	resultX=0;
+				// }
+				// if(resultX>=maxW){
+				// 	resultX=maxW;
+				// }
+				
+				resultX = resultX<=0?0:(resultX>=maxW?maxW:resultX);
+				resultY = resultY<=0?0:(resultY>=maxH?maxH:resultY);
+				
+				box.style.left=resultX+"px";
+				box.style.top=resultY+"px";
+			}
+			
+			function clear(){
+				window.removeEventListener("mousemove",move);
+				window.removeEventListener("mouseup",clear);
+			}
+		</script>
+	</body>
+</html>

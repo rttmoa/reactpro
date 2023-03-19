@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="axios.min.js"></script>
+		<script>
+			//客户端 和  代理服务器    域名，协议，端口号，保持一致
+			//访问代理服务器，通过代理服务器访问 简书
+			//通过服务器访问  http://127.0.0.1:1001/jianshu.html
+			
+			axios.get("http://127.0.0.1:1001/aaa")
+			.then(response=>{
+				return response.data
+			}).then(value=>{
+				console.log(value);
+			}).catch(err=>{
+				consol.log(err);
+			})
+			
+			// axios.get("https://www.jianshu.com/asimov/subscriptions/recommended_collections")
+			// .then(response=>{
+			// 	return response.data
+			// }).then(value=>{
+			// 	console.log(value);
+			// }).catch(err=>{
+			// 	consol.log(err);
+			// })
+		</script>
+	</body>
+</html>

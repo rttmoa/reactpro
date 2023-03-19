@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="swiper-bundle.min.css">
+		<style>
+		  html,
+		  body {
+		    position: relative;
+		    height: 100%;
+		  }
+		
+		  body {
+		    background: #eee;
+		    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+		    font-size: 14px;
+		    color: #000;
+		    margin: 0;
+		    padding: 0;
+		  }
+		
+		  .swiper {
+		    width: 600px;
+		    height: 300px;
+			--swiper-pagination-color: #ff0000;
+			--swiper-navigation-color: #00ff33;
+		  }
+		
+		  .swiper-slide {
+		    text-align: center;
+		    font-size: 18px;
+		    background: #fff;
+		
+		    /* Center slide text vertically */
+		    display: -webkit-box;
+		    display: -ms-flexbox;
+		    display: -webkit-flex;
+		    display: flex;
+		    -webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		    -webkit-justify-content: center;
+		    justify-content: center;
+		    -webkit-box-align: center;
+		    -ms-flex-align: center;
+		    -webkit-align-items: center;
+		    align-items: center;
+		  }
+		
+		  .swiper-slide img {
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		    object-fit: cover;
+		  }
+		  .swiper-pagination-bullet-active{
+			  width:30px;
+			  border-radius:5px;
+		  }
+		</style>
+	</head>
+	<body>
+		<div class="swiper mySwiper">
+		  <!-- 具体轮播内容 -->
+		  <div class="swiper-wrapper">
+		    <div class="swiper-slide">Slide 1</div>
+		    <div class="swiper-slide">Slide 2</div>
+		    <div class="swiper-slide">Slide 3</div>
+		    <div class="swiper-slide">Slide 4</div>
+		    <div class="swiper-slide">Slide 5</div>
+		    <div class="swiper-slide">Slide 6</div>
+		    <div class="swiper-slide">Slide 7</div>
+		    <div class="swiper-slide">Slide 8</div>
+		    <div class="swiper-slide">Slide 9</div>
+		  </div>
+		  <!-- 分页器：小圆点 -->
+		  <div class="swiper-pagination"></div>
+		  
+		   <!-- 如果需要导航按钮 -->
+		   <div class="swiper-button-prev"></div>
+		   <div class="swiper-button-next"></div>
+		</div>
+		
+		<script src="swiper-bundle.min.js"></script>
+		
+		<script>
+		  var swiper = new Swiper(".mySwiper", {
+		    pagination: {
+		      el: ".swiper-pagination",
+		    },
+			// 如果需要前进后退按钮
+			navigation: {
+			    nextEl: '.swiper-button-next',
+			    prevEl: '.swiper-button-prev',
+			},
+			loop: true,//无限循环
+			autoplay: {//自动循环
+			    delay: 1500,
+			    stopOnLastSlide: false,
+			    disableOnInteraction: true,
+			},
+		  });
+		</script>
+	</body>
+</html>

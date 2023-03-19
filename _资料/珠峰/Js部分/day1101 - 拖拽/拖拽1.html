@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:100px;
+				width:100px;
+				background-color: #0171C5;
+				position: relative;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			let box=document.getElementById("box");
+			let fx,fy;
+			box.onmousedown=function(e){
+				fx=e.offsetX;//刚进入小盒子，鼠标按下的初始坐标
+				fy=e.offsetY;
+				//console.log(e.offsetX,e.offsetY);
+				
+				//鼠标进入小盒子按下后，再全局抬起，盒子移动
+				window.addEventListener("mouseup",move);
+			}
+			
+			function move(e){
+				let newX=e.clientX;//鼠标抬起的新坐标
+				let newY=e.clientY;
+				
+				box.style.left=(newX-fx)+"px";
+				box.style.top=(newY-fy)+"px";
+				
+				//移除mouseup
+				window.removeEventListener("mouseup",move);
+			}
+		</script>
+	</body>
+</html>

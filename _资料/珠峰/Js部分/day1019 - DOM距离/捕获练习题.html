@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- <script>
+			let str = "good good Study，day day up！";
+			let reg=/\b([a-zA-Z])([a-zA-Z]+)\b/g;
+			
+			let newstr=str.replace(reg,(_,$1,$2)=>{
+				return $1.toUpperCase()+$2
+			})
+			
+			console.log(newstr);
+		</script> -->
+		
+		<!-- <script>
+			let str = "good good Study, day day up！";
+			let arr=str.split(" ");
+			let item,newarr=[];
+		    for(let i=0;i<arr.length;i++){
+				item=arr[i];
+				newarr.push(item.slice(0,1).toUpperCase()+item.slice(1))
+			}
+			console.log(newarr.join(" "));
+		</script> -->
+		
+		
+		<!-- <script>
+			//验证一个字符中那个字母出现的次数最多，多少次
+			let str = "zhufengpeixunzhoulaoshihhh";
+			//将相同的字母挨到一起  
+			//先将字符串转为数组，数组排序，数组再转为字符串
+			let newstr=str.split("").sort().join("");
+	        let reg=/([a-z])\1+/g;
+			//console.log(newstr.match(reg));
+
+		    let obj={},max=2;//假设最多的字母次数2
+			newstr.replace(reg,(val,$1)=>{
+				let len=val.length;
+				if(len>max){
+					max=len;
+				}
+				obj[$1]=len;
+			})
+			//求最多出现的次数 max
+			// obj={
+			// 	n:2,
+			// 	m:3...
+			// }
+			
+			for(let key in obj){
+				if(obj[key]==max){
+					console.log(`该字母${key}出现次数最多，出现${max}次`);
+				}
+			}
+		</script> -->
+		
+		<!-- <script>
+			String.prototype.queryURLParams=function queryURLParams(){
+			    //this---str 
+				let obj={};
+				let str=this;
+				let rega=/([^?&=#]+)=([^?&=#]+)/g;
+				str.replace(rega,(_,$1,$2)=>{
+					obj[$1]=$2;
+				})
+				
+				let regb=/#([^?&=#]+)/g;
+				str.replace(regb,(_,$1)=>{
+					obj["HASH"]=$1;
+				})
+				
+				return obj;
+			}
+			let str="http://www.zhufengpeixun.cn/index.html?name=xxx&age=12#teacher";
+			console.log(str.queryURLParams());
+			//{name:"xxx",age:"12",HASH:"teacher"}
+		</script> -->
+		
+		<script>
+			let obj={};
+			let str="http://www.zhufengpeixun.cn/index.html?name=xxx&age=12#teacher";
+			let arra=str.split("?");
+			let strright=arra[1];
+			let arrb=strright.split("#");
+			console.log(arrb);
+			obj["HASH"]=arrb[1];
+			console.log(obj);
+		</script>
+	</body>
+</html>

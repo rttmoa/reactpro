@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:100px;
+				width:100px;
+				background-color: #8A2BE2;
+				position: relative;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			let beginX,beginY,endX,endY;
+			box.onmousedown=function(e){
+				beginX=e.offsetX;
+				beginY=e.offsetY;
+				console.log(beginX,beginY);
+				//进入小盒子后按下，在window移动鼠标，小盒子才跟着走
+				window.addEventListener("mouseup",up)
+			}
+			
+			function up(e){
+				endX=e.clientX;
+				endY=e.clientY;
+				
+				box.style.left=endX-beginX+"px";
+				box.style.top=endY-beginY+"px";
+				
+				//抬起的瞬间，抬起事件移除
+				window.removeEventListener("mouseup",up)
+			}
+		</script>
+	</body>
+</html>

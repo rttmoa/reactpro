@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>珠峰培训零基础高薪就业班</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        body {
+            position: relative;
+            height: 500vh;
+            /* background: -webkit-linear-gradient(top left, pink, lightblue, orange); */
+        }
+
+        /* 设置样式 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .lazyBox {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 340px;
+            background: #DDD;
+        }
+
+        .lazyBox img {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        延迟加载处理：结构样式上
+         1.需要延迟加载的图片，外层包裹一层盒子；盒子具备宽高和默认的背景！
+         2.图片的src不赋值，真实图片地址赋值给data-src自定义属性！
+         3.为了防止出现没有加载真实图片，区域出现“碎图”，最开始让图片隐藏
+           + 可以设置display:none
+           + 也可以设置opacity:0 「推荐：可以设置渐现的动效」
+     -->
+    <div class="lazyBox">
+        <img src="" alt="" data-src="./images/girl.webp">
+    </div>
+
+    <!-- IMPORT JS -->
+    <script src="./utils.js"></script>
+    <script src="./1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				height:2000px;
+			}
+			#box{
+				height:100px;
+				width:100px;
+				/* margin:100px; */
+				background-color: pink;
+				position:fixed;
+				left:100px;
+				top:100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			//offsetX/offsetY: 坐标点距离 目标元素的最左侧/最上侧 的距离
+			//clientX/clientY: 坐标点距离 视口的最左侧/最上侧 的距离
+			//pageX/pageY: 坐标点距离 视口+滚动条的距离 的最左侧/最上侧 的距离
+			//screenX/screenY: 坐标点距离 电脑屏幕的最左侧/最上侧 的距离
+			box.onclick=function(e){
+				//console.log(e.offsetX,e.offsetY);
+				//console.log(e.clientX,e.clientY);
+				//console.log(e.pageX,e.pageY);
+				console.log(e.screenX,e.screenY);
+			}
+		</script>
+	</body>
+</html>

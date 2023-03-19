@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				height:2000px;
+				background-image: linear-gradient(to bottom,red,blue,green);
+			}
+			#box{
+				height:100px;
+				width:100px;
+				background-color: #fff;
+				position: fixed;
+				right:50px;
+				bottom:50px;
+				opacity: 0;
+				transition: opacity 3s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			返回顶部
+		</div>
+		<script>
+			let html=document.documentElement||document.body;
+			
+			window.onscroll=function(){
+				if(html.scrollTop>100){
+					box.style.opacity="1";
+				}else{
+					box.style.opacity="0";
+				}
+			}
+			
+			var timer=null,speed=50;
+			box.onclick=function(){
+				//html.scrollTop=0;
+				let t=html.scrollTop;
+				if(timer==null){
+					timer=setInterval(function(){
+						t-=speed;
+						if(t<=0){
+							clearInterval(timer);
+							timer=null;
+							html.scrollTop=0;
+						}
+						html.scrollTop=t;
+					},100)
+				}
+			}
+		</script>
+	</body>
+</html>

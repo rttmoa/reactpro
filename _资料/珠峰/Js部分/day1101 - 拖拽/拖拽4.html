@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			#box{
+				height:100px;
+				width:100px;
+				background-color: #AC2925;
+				position: fixed;
+				left:0;
+				top:0;
+			}
+			#boxtwo{
+				height:150px;
+				width:150px;
+				background-color: #0000FF;
+				position: fixed;
+				left:0;
+				top:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="boxtwo"></div>
+		<script>
+			let box=document.getElementById("box");
+			let boxtwo=document.getElementById("boxtwo");
+		    let html=document.documentElement||document.body;
+			
+			function down(e){
+				this.maxW=html.clientWidth-this.offsetWidth;
+				this.maxH=html.clientHeight-this.offsetHeight;
+				
+				this.fx=e.offsetX;//初始坐标要定义到，当前触发事件的小盒子身上
+				this.fy=e.offsetY;
+				
+				this._move=move.bind(this);
+				this._clear=clear.bind(this);
+				
+				console.dir(this);
+				
+				window.addEventListener("mousemove",this._move);
+				window.addEventListener("mouseup",this._clear);
+			}
+			function move(e){
+				this.newX=e.clientX;
+				this.newY=e.clientY;
+				
+				let resultX=this.newX-this.fx;
+				let resultY=this.newY-this.fy;
+				
+				resultX=resultX<=0?0:(resultX>=this.maxW?this.maxW:resultX);
+				resultY=resultY<=0?0:(resultY>=this.maxH?this.maxH:resultY);
+				
+				this.style.left=resultX+"px";
+				this.style.top=resultY+"px";
+			}
+			
+			function clear(){
+				window.removeEventListener("mousemove",this._move);
+				window.removeEventListener("mouseup",this._clear);
+			}
+			
+			box.addEventListener("mousedown",down);
+			boxtwo.addEventListener("mousedown",down);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 分组
+			var str="acca bddb 111 222";
+			var reg=/(a|b)(c|d)\2\1/g;  
+			// \1 第一个小括号匹配成功的内容一致
+			// \2 第二个小括号匹配成功的内容一致
+			console.log(str.match(reg));
+		</script>
+		
+		<script>
+			//?: 只匹配不捕获   与小括号
+			var str="372901200103235943";
+			var reg=/\d{6}(\d{4})(\d{2})(\d{2})\d{2}(?:\d)[0-9X]/;
+			let con=reg.exec(str);
+			console.log(reg.exec(str));
+			let stra=`出生年：${con[1]},
+			出生月：${con[2]}，
+			出生日：${con[3]}
+			性别：${ con[4]%2==0 ? "女" : "男" }
+			`;
+			console.log(stra);
+		</script>
+	</body>
+</html>

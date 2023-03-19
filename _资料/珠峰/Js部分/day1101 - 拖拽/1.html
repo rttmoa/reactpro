@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">111</div>
+		<script>
+			//e.target  FF
+			//e.srcElement IE
+			
+			// box.onclick=function(){
+			// 	console.log(this);
+			// }
+			
+			// box.onclick=()=>{
+			// 	console.log(this);
+			// }
+			
+			box.onclick=(e)=>{
+				console.log(e.target||e.srcElement);//目标对象--触发事件的目标元素
+			}
+		</script>
+	</body>
+</html>

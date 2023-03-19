@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		 1. replace() 替换
+		 2. match() 捕获
+		 3. srarch()查询   只能查找第一个的索引下标
+		   g修饰，不生效的
+		 4.split() 分隔，同时将字符串转化为数组
+		<script>
+		    let str="Apple one Apple two apple 14";
+			let reg=/apple/ig;
+			console.log(str.replace(reg,"苹果"));
+			
+			// <b style='color:red'>red</b>
+			// var str="red one blue two green scee";
+			// let reg=/(red|blue|green)/ig;
+			// var newstr=str.replace(reg,"<b style='color:$1'>$1</b>");
+			// //console.log(newstr);
+			// document.write(newstr);
+			
+			var str="1red one 1blue two 1green scee";
+			let reg=/1(red|blue|green)/ig;
+			var newstr=str.replace(reg,(val,$1)=>{
+				console.log(val,$1);
+				return `<b style='color:${$1}'>${val}</b>`;
+			});
+			document.write(newstr);
+		</script>
+		
+		<script>
+			// ? 的作用: 
+			// 1. 作用一:如果前面的内容不是数量词,它的含义就是数量词 0次或1次,
+			// 2. 作用二:如果前面的内容是数量词,它的含义就是将贪婪匹配变成惰性匹配
+	
+			var str="<b>hello</b> one <b>two</b> scee";
+			var newstr=str.match(/<b>.*<\/b>/ig);
+			console.log(newstr);//贪婪匹配：尽可能长的匹配
+
+
+           var str="<b>hello</b> one <b>two</b> scee";
+           var newstr=str.match(/<b>.*?<\/b>/ig);
+           console.log(newstr);//惰性匹配：尽可能短的匹配
+		</script>
+		
+		<script>
+			var str="hello do Hello two HEllo scee do one";
+			var reg=/\bdo\b/ig;
+			//var strindex=str.search(reg);
+		
+			while(reg.test(str)){
+			     var newstr=str.search(reg);
+			     console.log(newstr);//6 
+			}
+		</script>
+		
+		<script>
+			// var str="one    two   three aa";
+			// var arr=str.split(/\s+/);
+			// console.log(arr);
+		
+			//去掉字符串前后空格，不去掉中间
+			var str="      one two three aa   ";
+			var newstr=str.replace(/(^\s+|\s+$)/g,"");
+			console.log(newstr);
+		</script>
+	</body>
+</html>

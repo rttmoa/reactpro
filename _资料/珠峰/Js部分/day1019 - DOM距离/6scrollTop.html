@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body{
+				height:2000px;
+				background-image: linear-gradient(blue, red);
+			}
+			#btn{
+				position:fixed;
+				right:30px;
+				bottom:50px;
+				/* display: none; */
+				opacity:0;
+				transition: opacity 3s;
+			}
+		</style>
+	</head>
+	<body>
+	    <button id="btn">返回顶部</button>
+		<script>
+			let html=document.documentElement||document.body;
+			
+			window.onscroll=function(){
+				if(html.scrollTop>200){//滚动距离大于200，显示按钮
+					btn.style.opacity="1";
+				}else{
+					btn.style.opacity="0";
+				}
+			}
+			
+			btn.onclick=function(){
+				html.scrollTop=0;
+			}
+		</script>
+	</body>
+</html>
