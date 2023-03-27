@@ -3,7 +3,7 @@
 
 
 从头搭建一个Webpack-React项目,基本配置： https://juejin.cn/post/7027019457599897608
-
+React的Webpack配置：https://www.jianshu.com/p/0e01ca947e50
 
 安装packagejson文件使用yarn(node>=14.15.0)
 

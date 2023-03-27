@@ -19,8 +19,9 @@ import { BrowserRouter } from 'react-router-dom'
 // import Index from './Hooks ~ 四个典型的使用场景/4-zindex'  // 拆分复杂组件  useArticles & useCategories & useCombinedArticles & useFilteredArticles 
 
 // import Index from './Hooks ~ 八个常用Hooks/1、useToggle' // 切换状态
-import Index from './Hooks ~ 八个常用Hooks/8、useDebounce' // 对 useTimeout 进一步进行封装，可以实现 debounce 的操作，主要目的是为了解决某个方法在指定时间内重复调用
+// import Index from './Hooks ~ 八个常用Hooks/8、useDebounce' // 对 useTimeout 进一步进行封装，可以实现 debounce 的操作，主要目的是为了解决某个方法在指定时间内重复调用
 
+import Index from './3、react-cropper-pro'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
