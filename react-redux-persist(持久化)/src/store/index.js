@@ -10,8 +10,12 @@ const persistConfig = {
   key: 'root',
   storage
 };
+
 const middleware = [thunk];
+
 const persistedReducer = persistReducer( persistConfig, rootReducer );
+
+
 
 
 export const store = createStore(persistedReducer, {}, compose(

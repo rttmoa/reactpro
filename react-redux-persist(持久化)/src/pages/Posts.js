@@ -10,7 +10,7 @@ import Post from '../components/posts/post';
 class Posts extends Component {
 
   componentDidMount () {
-    // this.props.fetchPosts()
+    this.props.fetchPosts()
   }
   render() {
     // console.log(this.props.posts) // body,id,title,userId
