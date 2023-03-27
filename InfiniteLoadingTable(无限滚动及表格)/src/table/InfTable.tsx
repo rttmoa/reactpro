@@ -56,7 +56,7 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
   function loadMoreRows({ startIndex, stopIndex }: IndexRange) {
     // console.log(123)
     return new Promise((resolve, reject) => { 
-      // console.log(list, list.length) // 初始 10, 20, 30
+      console.log(list, list.length) // 初始 10, 20, 30
 
       let newList = [...list].concat(generateRow(10, list.length));
       setList(newList);

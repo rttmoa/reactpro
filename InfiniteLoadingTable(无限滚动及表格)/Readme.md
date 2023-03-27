@@ -1,6 +1,6 @@
 # 具有无限滚动的纯前端 Table 组件
 
-    Typescript + React + Styled Component + Hooks + React-Virtualized
+    React + Typescript + Styled Component + Hooks + React-Virtualized
 
 **知乎文章地址：https://zhuanlan.zhihu.com/p/129791566**
 
@@ -11,8 +11,6 @@
 **npm install**
 
 **npm start**
-
-
 
 我们使用React-Virtualized来帮助我们实现Infinite Loading功能，用到的组件有
 
