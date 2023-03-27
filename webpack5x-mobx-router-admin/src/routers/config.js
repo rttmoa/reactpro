@@ -1,8 +1,9 @@
 /* eslint-disable import/extensions */
 import React, { lazy } from 'react';
 import {  HomeOutlined,  SettingFilled,  SmileOutlined,  FormOutlined,  UserOutlined,  StarOutlined,  WarningOutlined,  FrownOutlined, } from '@ant-design/icons';
-import BasicLayout from '@/layouts/BasicLayout';
-import BlankLayout from '@/layouts/BlankLayout';
+
+import BasicLayout from '../layouts/BasicLayout';
+import BlankLayout from '../layouts/BlankLayout';
 
 
 
@@ -91,8 +92,8 @@ const config = [
               },
             ],
           },
-          { path: '/', exact: true, redirect: '/welcome' },
-          { path: '*', exact: true, redirect: '/exception/404' },
+          { path: '/', exact: true, redirect: '/welcome' },        //  重定向
+          { path: '*', exact: true, redirect: '/exception/404' },  //  重定向
         ],
       },
     ],

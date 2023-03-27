@@ -5,10 +5,21 @@ import zhCN from 'antd/es/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import './styles/main.less';
-
 import AppRouter from './routers/AppRouter';
 
 dayjs.locale('zh-cn');
+
+
+
+
+
+// main
+// layouts
+// routers
+// utils
+
+
+
 
 const App = () => (
   <ConfigProvider locale={zhCN}>
@@ -24,7 +35,7 @@ ReactDom.render(<App />, document.getElementById('app'));
 if (module.hot) {
   module.hot.accept((err) => {
     if (err) {
-      console.error('module.hot,', err);
+      // console.error('module.hot,', err);
     }
   });
 }

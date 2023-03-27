@@ -2,12 +2,13 @@ import React from 'react';
 import { Layout } from 'antd';
 import SiderMenu from '../SiderMenu';
 import MainHeader from '../MainHeader';
-// import MainFooter from "../MainFooter";
+import MainFooter from "../MainFooter";
 
 import './style.less';
 
 
 
+// 页面的布局 - 侧边栏+头部+内容+底部
 const BasicLayout = ({ route, children }) => (
   <Layout className="main-layout">
     <SiderMenu routes={route.childRoutes} />
@@ -16,7 +17,7 @@ const BasicLayout = ({ route, children }) => (
       <MainHeader />
       <Layout.Content className="main-layout-content">
         {children}
-        {/* <MainFooter></MainFooter> */}
+        <MainFooter />
       </Layout.Content>
     </Layout>
   </Layout>

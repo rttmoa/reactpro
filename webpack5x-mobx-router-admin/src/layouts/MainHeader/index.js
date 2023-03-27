@@ -9,22 +9,20 @@ import './style.less';
 
 const menu = (
   <Menu>
-    <Menu.Item key="0">
-      <SmileOutlined />
-      个人信息
-    </Menu.Item>
+    <Menu.Item key="0"><SmileOutlined />个人信息</Menu.Item>
     <Menu.Divider />
     <Menu.Item key="1">
-      <Link to="/login">
-        <LogoutOutlined />
-        &nbsp; 退出登录
-      </Link>
+      <Link to="/login"><LogoutOutlined />&nbsp; 退出登录</Link>
     </Menu.Item>
+    <Menu.Item key="2">Dropdown/Menu使用</Menu.Item>
   </Menu>
 );
 
+// Header：使用mobx管理侧边栏的展开与关闭
 const MainHeader = () => {
   const { globalStore } = appStores();
+  // console.log(globalStore)
+
   return (
     <Layout.Header className="main-header">
       <Row type="flex" style={{ paddingRight: 20 }}>

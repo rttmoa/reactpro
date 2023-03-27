@@ -3,6 +3,7 @@ export const paramTypes = [
   { label: '变量', value: 1 },
   { label: '定值', value: 2 },
 ];
+
 // 传参类型
 export const paramVarTypes = [
   { label: '字符', value: 'string' },
