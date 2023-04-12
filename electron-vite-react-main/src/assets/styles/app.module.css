@@ -4,39 +4,17 @@
 .app .appHeader {
   background-color: #282c34;
   min-height: 100vh;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-justify-content: center;
-     -moz-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: -webkit-calc(10px + 2vmin);
-  font-size: -moz-calc(10px + 2vmin);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 .app .appHeader .logos {
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  box-sizing: border-box;
+  align-items: center;
   padding: 0 5vw;
   width: 100%;
 }
@@ -48,73 +26,26 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .app .appHeader .logos .imgBox .appLogo {
-    -webkit-animation: App-logo-spin infinite 20s linear;
-       -moz-animation: App-logo-spin infinite 20s linear;
-         -o-animation: App-logo-spin infinite 20s linear;
-            animation: App-logo-spin infinite 20s linear;
-  }
-  @-webkit-keyframes App-logo-spin {
-    from {
-      -webkit-transform: rotate(0deg);
-              transform: rotate(0deg);
-    }
-    to {
-      -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
-    }
-  }
-  @-moz-keyframes App-logo-spin {
-    from {
-      -moz-transform: rotate(0deg);
-           transform: rotate(0deg);
-    }
-    to {
-      -moz-transform: rotate(360deg);
-           transform: rotate(360deg);
-    }
-  }
-  @-o-keyframes App-logo-spin {
-    from {
-      -o-transform: rotate(0deg);
-         transform: rotate(0deg);
-    }
-    to {
-      -o-transform: rotate(360deg);
-         transform: rotate(360deg);
-    }
+    animation: App-logo-spin infinite 20s linear;
   }
   @keyframes App-logo-spin {
     from {
-      -webkit-transform: rotate(0deg);
-         -moz-transform: rotate(0deg);
-           -o-transform: rotate(0deg);
-              transform: rotate(0deg);
+      transform: rotate(0deg);
     }
     to {
-      -webkit-transform: rotate(360deg);
-         -moz-transform: rotate(360deg);
-           -o-transform: rotate(360deg);
-              transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 }
 .app .appHeader button {
-  font-size: -webkit-calc(10px + 2vmin);
-  font-size: -moz-calc(10px + 2vmin);
   font-size: calc(10px + 2vmin);
 }
 .app .appHeader .appLink {
   color: #61dafb;
 }
 .app .appHeader .staticPublic {
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .app .appHeader .staticPublic code {
   padding: 4px 7px;
@@ -122,4 +53,4 @@
   border-radius: 4px;
   background-color: rgba(30, 30, 30, 0.7);
   font-size: 13px;
-}
+}/*# sourceMappingURL=app.module.css.map */
