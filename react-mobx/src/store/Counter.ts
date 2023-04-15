@@ -46,8 +46,7 @@ const counter = new Counter()
 // autorun(() => {
 //   console.log('counter', counter.count);
 // })
-reaction(
-  () => counter.count,
+reaction( () => counter.count,
   (newValue, oldValue) => {
     console.log('counter.count变化了');
   }
