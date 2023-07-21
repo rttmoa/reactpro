@@ -39,32 +39,37 @@ interface TableProps {
 // Functional Component
 const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
 
+
+  // 计算列宽度占比 （每列的长度占总数的多少）
+  function calculateRatio(list: {name:string; length:number}[]): {[key: string]: number} { // 每列的宽度占比
+    let totalLength = 0;
+    for (let i = 0; i < list.length; i++) {
+      totalLength += list[i].length;
+    }
+    // console.log(list.length, totalLength) // 5, 130
+    let ratioMap = list.reduce(
+      (pre, cur) => Object.assign({ [cur.name] : cur.length / totalLength }, pre), {}
+    ); 
+    // ratioMap: {column5: 0.1538461535385, column4: 0.15384615384685, column3: 0.23076923923078, column2: 0.230769076978, column1: 0.2307696923078}
+    return ratioMap;
+  }
+
   const [list, setList] = useState<{ [key: string]: string | number }[]>( generateRow(10, 1) ); // 每行的数据
 
-  const [columnRatio, setColumnRatio] = useState(calculateRatio(columnList)); // 列宽度
-  // console.log(columnRatio)
+  const [columnRatio, setColumnRatio] = useState(calculateRatio(columnList)); // 每列宽度
 
   let screenWidth = useScreenWidth(); // 屏幕的宽度
   // console.log('screenWidth', screenWidth)
 
+
+  // 是否加载完成
   function isRowLoaded({ index }: Index) { // 是否加载完成
     // console.log(index)
     // console.log(!!list[index])
     return !!list[index];
   }
 
-  function loadMoreRows({ startIndex, stopIndex }: IndexRange) {
-    // console.log(123)
-    return new Promise((resolve, reject) => { 
-      console.log(list, list.length) // 初始 10, 20, 30
-
-      let newList = [...list].concat(generateRow(10, list.length));
-      setList(newList);
-      resolve(newList);
-    });
-  }
-
-  function makeid(length: number) { // 行数据 字符串处理
+  function makeid(length: number) { // 行数据  （随机生成length长度的字符串）
     // console.log(length) // 父组件传递过来的length长度
     var result = "";
     var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -76,17 +81,27 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     return result;
   }
 
+
   function generateRow(count: number, len: number) { // 生成count行数据, 数组长度为len
-    // console.log(123)
     let newList = [];
     for (let i = 0; i < count; i++) {
       let row: { [key: string]: string } = columnList.reduce(
-        (pre, cur) => Object.assign( {[cur.name] : makeid(cur.length)}, pre ), {}
+        (pre, cur) => Object.assign( {[cur.name] : makeid(cur.length)}, pre), {}
       );
       newList.push(Object.assign({ index: i + len }, row));
     }
     return newList;
   }
+
+  function loadMoreRows({ startIndex, stopIndex }: IndexRange) {
+    return new Promise((resolve, reject) => { 
+      // console.log(list, list.length) // 初始 10, 20, 30
+      let newList = [...list].concat(generateRow(10, list.length));
+      setList(newList);
+      resolve(newList);
+    });
+  }
+ 
 
   function nextKey(dataKey: string): string {
     for (let i = 0; i < columnList.length; i++) {
@@ -106,23 +121,11 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     }
   }
 
-  function onRowClick({ index }: Index) { // 双击行
+  function onRowClick({ index }: Index) { // 双击行 打印索引index
     console.log("索引:", index)
   }
 
-  function calculateRatio(list: {name:string;length:number}[]):{[key: string]:number} { // 每列的宽度占比
-    let totalLength = 0;
-    for (let i = 0; i < list.length; i++) {
-      totalLength += list[i].length;
-    }
-    // console.log(list.length, totalLength) // 5, 130
-
-    let ratioMap = list.reduce(
-      (pre, cur) => Object.assign({ [cur.name] : cur.length / totalLength }, pre), {}
-    );
-    // console.log(ratioMap)
-    return ratioMap;
-  }
+  
 
   function columnHeaderRender({ dataKey, label }: TableHeaderProps) {
     // console.log(dataKey)
@@ -159,6 +162,8 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     );
   }
  
+
+
 
   return (
     <InfiniteLoader

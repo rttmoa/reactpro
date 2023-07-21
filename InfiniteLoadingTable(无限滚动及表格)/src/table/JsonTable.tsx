@@ -97,28 +97,29 @@ const isPrimitiveElement = (e: any) => { // 传递对象 如果不相同 则返�
   return (e !== Object(e))
 }
 
-/***--- 返回获取对象的属性名 Set()去重 ---**/
+/** #### TODO: 返回获取对象的属性名、Set去重后、返回Set集合: Set(2) {'id', 'type'}  */
 const getKeys = (arr: any) => { 
   let s = new Set();
-
   for (const e of arr) {
-    if (!isPrimitiveElement(e))
-      for (const key of Object.keys(e)) { // {id: '1001', type: 'Regular'}
+    // console.log(!isPrimitiveElement(e)) // 传递来的数据都可通过校验
+    if (!isPrimitiveElement(e)) {
+      for (const key of Object.keys(e)) { // e：{id: '1001', type: 'Regular'}
         // console.log(key)  // id, type, id, type, id, type, id, type...
         s.add(key) 
       }
-  }
-  // new Set() 数组去重
-  // console.log(s) // {'id', 'type'}
+    } 
+  } 
+  // console.log(s) // Set(2) {'id', 'type'}
   return s
 }
 
-// 确保Arr中的每个对象都有设置键值
+/** #### TODO: 确保Arr中的每个对象的键和Set集合中的键相匹配 ---*/
 const matchWithKeys = (arr: any, keys: Set<unknown>) => {
   for (let element of arr) {
-    // console.log(element) // 对象的每一项：{id: '1001', type: 'Regular'}
+    // console.log(element) // batter,topping数组的每一项：{id: '1001', type: 'Regular'}
+    
+    // 遍历Set集合中的键
     for (let key of keys) {
-
       // console.log(element.hasOwnProperty(key))
       if (!element.hasOwnProperty(key)) {
         element = Object.assign(element, { [key as string]: null })
@@ -128,7 +129,7 @@ const matchWithKeys = (arr: any, keys: Set<unknown>) => {
       }
     }
   }
-  // console.log("matchWithKeys处理结果:",arr)
+  // console.log("matchWithKeys处理结果:", arr)
   return arr
 }
 
@@ -168,22 +169,20 @@ const JsonTable: FunctionComponent<any> = () => {
 
 
   // tr部分和td部分 
-  const renderElement = (element: any) => {
-    // console.log(element)
+  const renderElement = (element: any) => { // (element: json_data) 
+    // element: {batters: {batter: Array(5)},  id: "0001", name: "Cake", ppu: 0.55, topping: (7) [{…}, {…}, {…}, {…}, {…}, {…}, {…}], type: "donut"}
     let child
+    // TODO: 对象属性的 键
     if (isPrimitiveElement(element)) { // 如果不是对象
-      // console.log("element:", element)
-      child = <td key={element}>{element}?</td>
-    }else{
-      // console.log(333)
-      if (Array.isArray(element)) {
-        // console.log(element) // Array(5)、Array(7)
-        // console.log(getKeys(element)) // Set(2) {'id', 'type'}
-        // console.log(getKeys(element).keys.toString())
-        // console.log(matchWithKeys(element, getKeys(element)))
-        matchWithKeys(element, getKeys(element)) 
+      // console.log("★☆element:", element)
+      child = <td key={element}>{element}★</td>
+    }else{ 
+      // TODO: 对象属性的 值 （是数组）
+      if (Array.isArray(element)) { // element: Array(5)、Array(7)  
+        matchWithKeys(element, getKeys(element))    
         child = <td key={getKeys(element).keys.toString()}>{renderRowVertical(element)}</td>
       }else{
+        // TODO: 对象属性的 值 （不是数组）
         // console.log(element) // ['id', 'type', 'name', 'ppu', 'batters', 'topping'] || batter
         child = renderObject(element)
       }
@@ -234,32 +233,30 @@ const JsonTable: FunctionComponent<any> = () => {
   
   // 行垂直
   const renderRowVertical = (row: any) => {
-    // row Array(5)、Array(7)
-    // getKeys(row) // 返回的是去重的id,type
+    // row:  { batter: Array(5), topping: Array(7) }
     let columns = [];
     for (let key of getKeys(row)) {  
-      columns.push(<td key={key as string}>{key as string}*</td>) /* 第三：渲染json_data第二层的属性名 - ['id', 'type'] */
+      columns.push(<td key={key as string}>{key as string} *= </td>) 
     }
     let rows = []
     let idx = 0
     for (let element of row) {
-      if (isPrimitiveElement(element)) { 
+      if (isPrimitiveElement(element)) {
         console.log('传入的不是对象！')
         rows.push(<tr key={element}>{renderElement(element)}</tr>)
-      }else {
+      } else {
         let values = [];
         for (let key of getKeys(row)) {  
           values.push(element[key as string])
         }
         // console.log(values) // 将row中对象转化为数组格式： ['1001', 'Regular'].....、['5004', 'Maple'] * 12
-        rows.push(<tr key={element + idx}>{renderRowHorizontal(values)}</tr>)/* 第四：渲染json_data第二层的属性值 */
+        rows.push(<tr key={element + idx}>{renderRowHorizontal(values)}</tr>) 
       }
       idx += 1
     }
     return renderTable(
       <React.Fragment>
-        <tr className="tr_columns">{columns}</tr>
-        {rows}
+        <tr className="tr_columns">{columns}</tr>{rows}
       </React.Fragment>
     )
   }

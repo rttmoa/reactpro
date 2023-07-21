@@ -4,25 +4,23 @@ import InfTable from "./table/InfTable";
 import JsonTable from "./table/JsonTable";
  
 
-/***--- CSS Type ---**/
+
 type ContainerProps = {
   height: string;
   width: string;
   background: string;
 }; 
-/***--- CSS Template ---**/
 const Container = styled.div<ContainerProps>`
   height: ${(props) => props.height};
-  width: ${(props) =>{ return  props.width}};
+  width:  ${(props) => props.width};
   background: ${(props) => props.background};
 `; 
-/***--- CSS Value ---**/
 const ContentContainer: ContainerProps = {
-  height: "95vh",
+  // FIXME: VH高度是否可滚动
+  height: "95vh", 
   width: "100%",
   background: "white",
 };
-
 const themes = {
   light: {
     foreground: "#000000",
@@ -37,11 +35,9 @@ const themes = {
 export const ThemeContext = React.createContext(themes.light);
 
 
-
-
 const App: React.FC = () => {
   
-  // Fake Data
+  /** #### TODO: Fake Data （表头，name，length） ---*/
   const columnList = [
     { name: "column1", length: 30 },
     { name: "column2", length: 30 },
@@ -49,18 +45,20 @@ const App: React.FC = () => {
     { name: "column4", length: 20 },
     { name: "column5", length: 20 },
   ];
- 
-
   return (
     <ThemeContext.Provider value={themes.dark}>
-
       <div className="App">
         <Container className="App-Content" {...ContentContainer}>
+          {/* content */}
+
+          {/* TODO: 无限滚动 */}
           <InfTable columnList={columnList} />
+
+          {/* TODO: JSON表格 */}
           {/* <JsonTable />  */}
+
         </Container>
       </div>
-
     </ThemeContext.Provider>
   );
 };
