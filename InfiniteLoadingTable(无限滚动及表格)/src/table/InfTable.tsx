@@ -38,7 +38,7 @@ interface TableProps {
 
 // Functional Component
 const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
-
+  // const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {}
 
   // 计算列宽度占比 （每列的长度占总数的多少）
   function calculateRatio(list: {name:string; length:number}[]): {[key: string]: number} { // 每列的宽度占比
