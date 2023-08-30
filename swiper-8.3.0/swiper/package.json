@@ -18,7 +18,7 @@
   "_requiredBy": [
     "#USER",
     "/"
-  ],
+  ], 
   "_resolved": "https://registry.npmjs.org/swiper/-/swiper-8.3.0.tgz",
   "_shasum": "3ed7498d978c03fdcebc77e1780c5f17829c6857",
   "_spec": "swiper",
