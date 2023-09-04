@@ -32,15 +32,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   include: [srcDir],
-      //   loader: 'eslint-loader',
-      //   enforce: 'pre',
-      //   options: {
-      //     fix: true,
-      //   },
-      // },
       {
         test: /\.(js|jsx)$/,
         include: [srcDir],
