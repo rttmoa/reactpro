@@ -10,7 +10,7 @@ import config from './config';
 
 
 const renderRoutes = (routes) => {
-  console.log(routes)
+  // console.log(routes)
   if (!Array.isArray(routes)) {
     return null;
   }

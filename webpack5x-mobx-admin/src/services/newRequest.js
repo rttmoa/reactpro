@@ -13,9 +13,6 @@ import Qs from 'qs'; // 引入qs模块，用来序列化post类型的数据
 import { message } from 'antd'; // 提示框
 import { autoMatch, checkStatus } from '../utils/index'; // 附近处理函数
 
-
-
-
 /** #### TODO: 接口请求，响应拦截 与封装  */
 let inError = false;
 // 创建axios实例
@@ -81,8 +78,7 @@ instance.interceptors.request.use(
   },
   (error) =>
     // 对请求错误做处理...
-     Promise.reject(error)
-  ,
+    Promise.reject(error),
 );
 
 // 实例添加响应拦截器

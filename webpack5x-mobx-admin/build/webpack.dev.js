@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const {merge} = require('webpack-merge');
+const { merge } = require('webpack-merge');
 // const path = require('path');
 
 const commonConfig = require('./webpack.common');
@@ -23,7 +23,7 @@ module.exports = merge(commonConfig, {
       },
     },
   },
-  plugins: [ new webpack.HotModuleReplacementPlugin()],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devtool: 'eval-source-map',
   // optimization: {
   //   moduleIds: 'named',

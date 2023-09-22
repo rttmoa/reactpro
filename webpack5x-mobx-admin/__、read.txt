@@ -1,26 +1,44 @@
 
 
-
-
-
 记录：
 
-  学习Webpack：
-    
+  todo 学习Webpack：
     webpack5.x 从零搭建 react17 项目： https://zhuanlan.zhihu.com/p/406514947
-
-
     18个常用 webpack插件，总会有适合你的！：https://blog.51cto.com/u_15809510/5968219
-
-
     Webpack指导书：https://tsejx.github.io/webpack-guidebook/best-practice/practical-application/composing-webpack-configuration
-
-
-    webpack 中的解析规则 ?
-
-
+    webpack 中的解析规则
+    Webpack核心原理：https://zhuanlan.zhihu.com/p/363928061?utm_medium=social&utm_oi=771340854718640128&utm_id=0
     webpack配置（google）：https://www.google.com/search?q=webpack%E9%85%8D%E7%BD%AE&ie=UTF-8#ip=1
 
 
-  此webpack5x：
-    111
+  todo webpack5x-mobx-admin
+    @ /build/webpack*   Webpack配置
+    @ /src/layouts/*    Layout布局
+      + /BasicLayout
+      + /BlankLayout
+      + /MainFooter
+      + /MainHeader
+      + /SiderMenu
+    @ /src/pages/*      页面：首页、登陆页、表单页、系统页
+      + /FormDemo
+        + index.js
+        + newModal.js
+        + SearchFrom.js
+        + store.js
+          = class CompanySetStore {}
+        + style.less
+      + /Exception
+      + /Home
+        + store.js
+          = class HomeStore {}
+      + /Login 
+      + /System
+        + GroovySet/
+          = class GroovySetStore {}
+    @ /src/routers    封装项目路由配置 & 封装项目路由
+    @ /src/services   二次封装axios
+    @ /src/stores     处理全局 Store
+      + class CommonStore {}
+      + class GlobalStore {}
+    @ /src/styles     封装公共Less
+    @ /src/utils      封装 工具类
