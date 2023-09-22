@@ -9,17 +9,10 @@ import AppRouter from './routers/AppRouter';
 
 dayjs.locale('zh-cn');
 
-
-
-
-
 // main
 // layouts
 // routers
 // utils
-
-
-
 
 const App = () => (
   <ConfigProvider locale={zhCN}>
@@ -28,8 +21,6 @@ const App = () => (
 );
 
 ReactDom.render(<App />, document.getElementById('app'));
-
-
 
 // 热更新
 if (module.hot) {
