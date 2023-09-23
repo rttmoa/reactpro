@@ -26,22 +26,14 @@ interface TableProps {
   }[];
 }
 
-
-
-
-
-// 实现：
-    // 1、
-    // 2、
-    // 3、
-
+  
 
 // Functional Component
 const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
   // const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {}
 
   // 计算列宽度占比 （每列的长度占总数的多少）
-  function calculateRatio(list: {name:string; length:number}[]): {[key: string]: number} { // 每列的宽度占比
+  function calculateRatio(list: {name: string; length: number}[]): {[key: string]: number} { // 每列的宽度占比
     let totalLength = 0;
     for (let i = 0; i < list.length; i++) {
       totalLength += list[i].length;
@@ -49,24 +41,9 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     // console.log(list.length, totalLength) // 5, 130
     let ratioMap = list.reduce(
       (pre, cur) => Object.assign({ [cur.name] : cur.length / totalLength }, pre), {}
-    ); 
+    )
     // ratioMap: {column5: 0.1538461535385, column4: 0.15384615384685, column3: 0.23076923923078, column2: 0.230769076978, column1: 0.2307696923078}
     return ratioMap;
-  }
-
-  const [list, setList] = useState<{ [key: string]: string | number }[]>( generateRow(10, 1) ); // 每行的数据
-
-  const [columnRatio, setColumnRatio] = useState(calculateRatio(columnList)); // 每列宽度
-
-  let screenWidth = useScreenWidth(); // 屏幕的宽度
-  // console.log('screenWidth', screenWidth)
-
-
-  // 是否加载完成
-  function isRowLoaded({ index }: Index) { // 是否加载完成
-    // console.log(index)
-    // console.log(!!list[index])
-    return !!list[index];
   }
 
   function makeid(length: number) { // 行数据  （随机生成length长度的字符串）
@@ -80,9 +57,7 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     }
     return result;
   }
-
-
-  function generateRow(count: number, len: number) { // 生成count行数据, 数组长度为len
+  function generateRow(count: number, len: number) { // 生成 count 行数据, 数组长度为 len
     let newList = [];
     for (let i = 0; i < count; i++) {
       let row: { [key: string]: string } = columnList.reduce(
@@ -92,8 +67,20 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     }
     return newList;
   }
+  const [list, setList] = useState<{ [key: string]: string | number }[]>(generateRow(10, 1)); // 每行的数据
 
-  function loadMoreRows({ startIndex, stopIndex }: IndexRange) {
+  const [columnRatio, setColumnRatio] = useState(calculateRatio(columnList)); // 每列宽度
+
+  let screenWidth = useScreenWidth(); // 屏幕的宽度
+  // console.log('screenWidth', screenWidth)
+
+
+  function isRowLoaded({ index }: Index) { // 是否加载完成    InfiniteLoader['isRowLoaded']
+    return Boolean(list[index])
+  }
+
+
+  function loadMoreRows({ startIndex, stopIndex }: IndexRange) { // 是否加载更多数据   InfiniteLoader['loadMoreRows']
     return new Promise((resolve, reject) => { 
       // console.log(list, list.length) // 初始 10, 20, 30
       let newList = [...list].concat(generateRow(10, list.length));
@@ -101,41 +88,39 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
       resolve(newList);
     });
   }
- 
+  
 
-  function nextKey(dataKey: string): string {
-    for (let i = 0; i < columnList.length; i++) {
-      if (dataKey === columnList[i].name) {
-        return columnList[(i + 1) % columnList.length].name;
-      }
-    }
-    return "";
-  }
 
-  function rowClassName({ index }: Index) { // 行类名
-    // console.log(index)
-    if (index < 0) {
-      return "headerRow";  
-    } else {
-      return index % 2 === 0 ? "evenRow" : "oddRow";
-    }
-  }
 
-  function onRowClick({ index }: Index) { // 双击行 打印索引index
-    console.log("索引:", index)
-  }
+  // function rowClassName({ index }: Index) { // 行类名
+  //   if (index < 0) {
+  //     return "headerRow";  
+  //   } else {
+  //     return index % 2 === 0 ? "evenRow" : "oddRow";
+  //   }
+  // }
+  // function onRowClick({ index }: Index) { // 双击行 打印索引index
+  //   console.log("索引:", index)
+  // }
 
   
 
   function columnHeaderRender({ dataKey, label }: TableHeaderProps) {
     // console.log(dataKey)
+    function nextKey(dataKey: string): string {
+      for (let i = 0; i < columnList.length; i++) {
+        if (dataKey === columnList[i].name) {
+          return columnList[(i + 1) % columnList.length].name;
+        }
+      }
+      return "";
+    }
     return (
       <React.Fragment key={dataKey}>
         {/* 顶部column名 */}
         <div className="ReactVirtualized__Table__headerTruncatedText" key="label">
           {label}
         </div>
-
         {dataKey === columnList[columnList.length - 1].name ? null : (
           // 可拖拽组件
           <Draggable
@@ -156,12 +141,11 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
           >
             <DragHandleIcon>:</DragHandleIcon>
           </Draggable>
-          // <div>1</div>
         )}
       </React.Fragment>
     );
   }
- 
+  
 
 
 
@@ -175,14 +159,14 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
         <div>
           <Table
             width={screenWidth - 10 } // 获取屏幕宽度
-            height={window.innerHeight - 10}
+            height={window.innerHeight - 30}
             headerHeight={40}
             rowHeight={40}
             rowCount={list.length}
             rowGetter={({ index }) => { return list[index]}}
             onRowsRendered={onRowsRendered}
-            onRowClick={onRowClick}
-            rowClassName={rowClassName}
+            onRowClick={(index: Index) => { console.log("索引:", index) }}
+            rowClassName={(index: any) => { return (index < 0) ? "headerRow" : (index % 2 === 0 ? "evenRow" : "oddRow") }}
             headerClassName="headerColumn"
             ref={registerChild}
           >
@@ -195,7 +179,6 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
                 key={column.name}
                 headerRenderer={columnHeaderRender}
               >
-
               </Column>
             ))}
           </Table>

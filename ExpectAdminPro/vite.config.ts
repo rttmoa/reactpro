@@ -5,7 +5,26 @@ import { wrapperEnv } from "./build/getEnv";
 import { resolve } from "path";
 import pkg from "./package.json";
 import dayjs from "dayjs";
+import path from "path";
+import fs from "fs";
+// const path = require("path");
+// const fs = require("fs");
 
+// FIXME: react-virtualized
+// const WRONG_CODE = `import { bpfrpt_proptype_WindowScroller } from "../WindowScroller.js";`;
+// export function reactVirtualized() {
+//   return {
+//     name: "my:react-virtualized",
+//     configResolved() {
+//       const file = path
+//         .resolve("react-virtualized")
+//         .replace(path.join("dist", "commonjs", "index.js"), path.join("dist", "es", "WindowScroller", "utils", "onScroll.js"));
+//       const code = fs.readFileSync(file, "utf-8");
+//       const modified = code.replace(WRONG_CODE, "");
+//       fs.writeFileSync(file, modified);
+//     }
+//   };
+// }
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
@@ -37,7 +56,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // Load proxy configuration from .env.development
       proxy: createProxy(viteEnv.VITE_PROXY)
     },
-    plugins: createVitePlugins(viteEnv),
+    plugins: [createVitePlugins(viteEnv) /* reactVirtualized() */],
     esbuild: {
       pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
     },

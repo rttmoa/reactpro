@@ -5,6 +5,13 @@ import './JsonTable.css'
 
 
 
+const testJsonData = {
+  "id": "0001",
+  "type": "donut",
+  "name": "Cake",
+  "ppu": 0.55,
+}
+
 const json_data = {
   "id": "0001",
   "type": "donut",
@@ -93,8 +100,9 @@ const isPrimitive = (element: any) => {
   return flag
 }
 
-const isPrimitiveElement = (e: any) => { // 传递对象 如果不相同 则返回true
-  return (e !== Object(e))
+const isPrimitiveElement = (element: any) => { // 传递对象 如果不相同 则返回true
+  // console.log(element);
+  return element !== Object(element)
 }
 
 /** #### TODO: 返回获取对象的属性名、Set去重后、返回Set集合: Set(2) {'id', 'type'}  */
@@ -133,30 +141,7 @@ const matchWithKeys = (arr: any, keys: Set<unknown>) => {
   return arr
 }
 
-
-
-
-
-// 测试JsonTable函数调用 -- 测试函数时不让组件渲染
-
-// let User = {UserName: "zhangsan"}
-// let User2 = {UserName: "zhangsan"}
-// console.log(User == Object(User)) // true
-
-// console.log(isPrimitiveElement(json_data)) // 传递对象 如果不相同 则返回true
-
-// console.log(getKeys(row1)) // 返回获取的属性名
-
-// json_data对象中batter和topping
-// console.log(matchWithKeys(json_data.batters.batter, getKeys(json_data.batters.batter))) 
-// console.log(matchWithKeys(json_data.topping, getKeys(json_data.topping))) 
-
-
-
-
-
-
-
+  
 
 
 
@@ -169,20 +154,20 @@ const JsonTable: FunctionComponent<any> = () => {
 
 
   // tr部分和td部分 
-  const renderElement = (element: any) => { // (element: json_data) 
+  const renderElement = (element: any) => {  
     // element: {batters: {batter: Array(5)},  id: "0001", name: "Cake", ppu: 0.55, topping: (7) [{…}, {…}, {…}, {…}, {…}, {…}, {…}], type: "donut"}
     let child
-    // TODO: 对象属性的 键
+
+    // console.log(isPrimitiveElement(element));
+    // return
     if (isPrimitiveElement(element)) { // 如果不是对象
       // console.log("★☆element:", element)
-      child = <td key={element}>{element}★</td>
+      child = <td key={element}>{element}</td>
     }else{ 
-      // TODO: 对象属性的 值 （是数组）
       if (Array.isArray(element)) { // element: Array(5)、Array(7)  
         matchWithKeys(element, getKeys(element))    
         child = <td key={getKeys(element).keys.toString()}>{renderRowVertical(element)}</td>
       }else{
-        // TODO: 对象属性的 值 （不是数组）
         // console.log(element) // ['id', 'type', 'name', 'ppu', 'batters', 'topping'] || batter
         child = renderObject(element)
       }
@@ -199,18 +184,20 @@ const JsonTable: FunctionComponent<any> = () => {
     // console.log("values", values)
 
     // td中渲染表格
-    return <td key={element}>
-      {
-        renderTable(
-          <React.Fragment>
-            {/* 第一：渲染json_data第一层的属性名 - ['id', 'type', 'name', 'ppu', 'batters', 'topping'] */}
-            <tr className="tr_columns">{renderRowHorizontal(keys)}</tr>
-            {/* 第二：渲染json_data第一层的属性值 - ['0001', 'donut', 'Cake', 0.55, {batter: Array(5)}, Array(7)] */}
-            <tr>{renderRowHorizontal(values)}</tr>
-          </React.Fragment>
-        )
-      }
+    return (
+      <td key={element}>
+        {
+          renderTable(
+            <>
+              {/* 第一：渲染json_data第一层的属性名 - ['id', 'type', 'name', 'ppu', 'batters', 'topping'] */}
+              <tr className="tr_columns">{renderRowHorizontal(keys)}</tr>
+              {/* 第二：渲染json_data第一层的属性值 - ['0001', 'donut', 'Cake', 0.55, {batter: Array(5)}, Array(7)] */}
+              <tr>{renderRowHorizontal(values)}</tr>
+            </>
+          )
+        }
     </td>
+    )
   }
 
   // 表格
@@ -255,9 +242,9 @@ const JsonTable: FunctionComponent<any> = () => {
       idx += 1
     }
     return renderTable(
-      <React.Fragment>
+      <>
         <tr className="tr_columns">{columns}</tr>{rows}
-      </React.Fragment>
+      </>
     )
   }
 
@@ -269,19 +256,22 @@ const JsonTable: FunctionComponent<any> = () => {
 
 
 
-  return <React.Fragment>
-    {
-      <table>
-        <tbody>
-          <tr>
-            {/* 测试函数注释掉,不让渲染 */}
-            {/* {renderElement(data)} */}
-            {renderElement(json_data)}
-            {/* {renderRowOfSameObject(row1)} */}
-          </tr>
-        </tbody>
-      </table>
-    }
-  </React.Fragment>
+  return (
+    <div style={{width: '1000px', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      {
+        <table>
+          <tbody>
+            <tr> 
+              {/* 测试函数注释掉,不让渲染 */}
+              {renderElement(testJsonData)}
+              {/* {renderElement(json_data)} */}
+              {/* {renderElement(data)} */}
+              {/* {renderRowOfSameObject(row1)} */}
+            </tr>
+          </tbody>
+        </table>
+      }
+    </div>
+  )
 }
 export default JsonTable

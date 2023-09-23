@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import InfTable from "./table/InfTable";
 import JsonTable from "./table/JsonTable";
- 
+  
 
 
 type ContainerProps = {
@@ -16,8 +16,7 @@ const Container = styled.div<ContainerProps>`
   background: ${(props) => props.background};
 `; 
 const ContentContainer: ContainerProps = {
-  // FIXME: VH高度是否可滚动
-  height: "95vh", 
+  height: "95vh", // VH高度是否可滚动
   width: "100%",
   background: "white",
 };
@@ -49,13 +48,10 @@ const App: React.FC = () => {
     <ThemeContext.Provider value={themes.dark}>
       <div className="App">
         <Container className="App-Content" {...ContentContainer}>
-          {/* content */}
 
-          {/* TODO: 无限滚动 */}
-          <InfTable columnList={columnList} />
+          {/* <InfTable columnList={columnList} /> */}
 
-          {/* TODO: JSON表格 */}
-          {/* <JsonTable />  */}
+          <JsonTable /> 
 
         </Container>
       </div>
