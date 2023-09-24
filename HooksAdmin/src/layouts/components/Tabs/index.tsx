@@ -10,6 +10,7 @@ import { routerArray } from "@/routers";
 import { searchRoute } from "@/utils/util";
 import MoreButton from "./components/MoreButton";
 import "./index.less";
+import React from "react";
 const { TabPane } = Tabs;
 
 
@@ -64,7 +65,7 @@ const LayoutTabs = (props: any) => {
 
 	return (
 		// Tabs: https://4x.ant.design/components/tabs-cn/
-		<>
+		<React.Fragment>
 			{!themeConfig.tabs && (
 				<div className="tabs">
 					<Tabs
@@ -92,7 +93,7 @@ const LayoutTabs = (props: any) => {
 					<MoreButton tabsList={tabsList} delTabs={delTabs} setTabsList={setTabsList}></MoreButton>
 				</div>
 			)}
-		</>
+		</React.Fragment>
 	);
 };
 const mapStateToProps = (state: any) => state;

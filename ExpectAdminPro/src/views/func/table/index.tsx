@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 import { Container } from "postcss"; // <Container></Container>
-import InfTable from "./InfTable2";
+// import InfTable from "./InfTable2";
 
 const themes = {
   light: {
@@ -27,9 +27,7 @@ const Table: React.FC = () => {
   return (
     <>
       <ThemeContext.Provider value={themes.dark}>
-        <div className="App">
-          <InfTable />
-        </div>
+        <div className="App">{/* <InfTable /> */}</div>
       </ThemeContext.Provider>
     </>
   );

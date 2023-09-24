@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import "./index.less";
+import React from "react";
 
 const LayoutFooter = (props: any) => {
 	const { themeConfig } = props;
 	return (
-		<>
+		<React.Fragment>
 			{!themeConfig.footer && (
 				<div className="footer">
 					<a href="http://www.spicyboy.cn/" target="_blank" rel="noreferrer">
@@ -12,7 +13,7 @@ const LayoutFooter = (props: any) => {
 					</a>
 				</div>
 			)}
-		</>
+		</React.Fragment>
 	);
 };
 
