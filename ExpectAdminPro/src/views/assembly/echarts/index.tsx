@@ -1,6 +1,6 @@
 import { Card, Col, Descriptions, Row, Typography } from "antd";
 import { RootState, useSelector } from "@/redux";
-import { option1Fn, option2Fn, option3Fn, option4Fn, option5Fn, option6Fn } from "./config";
+import { option1Fn, option2Fn, option3Fn, option4Fn, option5Fn, option6Fn, option7Fn } from "./config";
 import ECharts from "@/components/Echarts";
 import "./index.less";
 
@@ -46,6 +46,12 @@ const EChartsPage: React.FC = () => {
           <ECharts height={284} option={option6Fn()} />
         </Card>
       </Col>
+      <Col xl={8} lg={12} md={12} sm={24} xs={24}>
+        <Card hoverable title="仪表图">
+          <ECharts height={284} option={option7Fn()} />
+        </Card>
+      </Col>
+
       <Col xl={24} lg={24} md={24} sm={24} xs={24}>
         <Card>
           <Descriptions title="配置项 📚" bordered column={1} labelStyle={{ width: "200px" }}>

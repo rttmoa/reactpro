@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-function ErrorBoundary(props: { children: any }) {
+function ErrorBoundary(props: any) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const handleErrors = (err: any) => {
-      // console.log("object", err.error);
       setError(err.error.message);
     };
     window.addEventListener("error", handleErrors);
@@ -13,14 +12,21 @@ function ErrorBoundary(props: { children: any }) {
       window.addEventListener("error", handleErrors);
     };
   }, []);
-  // console.log(error);
   if (error) {
     return (
-      <h2>
-        SomeThing went wrong:
-        <br />
-        <h5>{error}</h5>
-      </h2>
+      <div>
+        <h1>SomeThing went wrong: {error}</h1>
+        <button
+          onClick={() => {
+            window.open("/");
+            // window.replace("/");
+            // window.history.back(-1);
+            // window.location.href("/");
+          }}
+        >
+          新界面
+        </button>
+      </div>
     );
   }
   return props.children;

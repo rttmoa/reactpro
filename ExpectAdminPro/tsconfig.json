@@ -26,6 +26,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "build/**/*.ts", "build/**/*.d.ts", "vite.config.ts", "src/component/Markdown/index.js", "src/component/Markdown/iconfont.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "build/**/*.ts", "build/**/*.d.ts", "vite.config.ts", "src/component/Markdown/index.tsx", "src/component/Markdown/iconfont.js"],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }

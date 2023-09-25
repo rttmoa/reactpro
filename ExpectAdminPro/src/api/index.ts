@@ -39,6 +39,7 @@ class RequestHttp {
           const configToken = store.getState().user.token;
           config.headers.set("x-access-token", configToken);
         }
+        // config.headers["authorization"] = `Bearer ${getToken()}` // qianfeng request
         return config;
       }, (error: AxiosError) => {
         return Promise.reject(error);

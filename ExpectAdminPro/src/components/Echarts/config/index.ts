@@ -1,5 +1,8 @@
 import * as echarts from "echarts/core";
 import { BarChart, LineChart, LinesChart, PieChart, ScatterChart, RadarChart, GaugeChart } from "echarts/charts";
+// todo Echarts Config：完整代码 按需导入
+// referce： https://echarts.apache.org/examples/zh/editor.html?c=pictorialBar-body-fill&lang=ts
+
 import {
   TitleComponent,
   TooltipComponent,
@@ -9,24 +12,29 @@ import {
   LegendComponent,
   PolarComponent,
   GeoComponent,
-  ToolboxComponent
+  ToolboxComponent,
+  MarkLineComponent,
+  MarkLineComponentOption
 } from "echarts/components";
 import { LabelLayout, UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
-import type {
+import {
   BarSeriesOption,
   LineSeriesOption,
   LinesSeriesOption,
   PieSeriesOption,
   ScatterSeriesOption,
   RadarSeriesOption,
-  GaugeSeriesOption
+  GaugeSeriesOption,
+  PictorialBarSeriesOption,
+  PictorialBarChart
 } from "echarts/charts";
 import type {
   TitleComponentOption,
   TooltipComponentOption,
   GridComponentOption,
-  DatasetComponentOption
+  DatasetComponentOption,
+  LegendComponentOption
 } from "echarts/components";
 import type { ComposeOption } from "echarts/core";
 
@@ -42,6 +50,9 @@ export type ECOption = ComposeOption<
   | GridComponentOption
   | DatasetComponentOption
   | ScatterSeriesOption
+  | MarkLineComponentOption
+  | LegendComponentOption
+  | PictorialBarSeriesOption
 >;
 
 echarts.use([
@@ -63,7 +74,9 @@ echarts.use([
   GaugeChart,
   LabelLayout,
   UniversalTransition,
-  CanvasRenderer
+  CanvasRenderer,
+  MarkLineComponent,
+  PictorialBarChart
 ]);
 
 export default echarts;
