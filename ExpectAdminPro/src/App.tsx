@@ -7,7 +7,7 @@ import { shallowEqual } from "react-redux";
 import { getBrowserLang } from "@/utils"; // 获取浏览器默认语言
 import { I18nextProvider } from "react-i18next";
 import { RefreshProvider } from "@/context/Refresh";
-
+import ErrorBoundary from "@/hooks/useErrorBoundary";
 import RouterProvider from "@/routers"; // 路由 router
 
 import i18n from "@/languages/index"; // 国际化 i18n
@@ -70,7 +70,9 @@ const App: React.FC = () => {
       <AppProvider>
         <I18nextProvider i18n={i18n}>
           <RefreshProvider>
-            <RouterProvider />
+            <ErrorBoundary>
+              <RouterProvider />
+            </ErrorBoundary>
           </RefreshProvider>
         </I18nextProvider>
       </AppProvider>

@@ -3,3 +3,8 @@
 
 
 page
+
+
+  添加功能：
+  
+  修复bug：降低 react-transition-group 包导致项目启动失败

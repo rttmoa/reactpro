@@ -34,8 +34,10 @@ const LayoutMain: React.FC = () => {
   const { run } = useDebounceFn(
     () => {
       const screenWidth = document.body.clientWidth;
-      const shouldCollapse = screenWidth < 1200;
-      if (isCollapse !== shouldCollapse) dispatch(setGlobalState({ key: "isCollapse", value: shouldCollapse }));
+      if (screenWidth) {
+        const shouldCollapse = screenWidth < 1200;
+        if (isCollapse !== shouldCollapse) dispatch(setGlobalState({ key: "isCollapse", value: shouldCollapse }));
+      }
     },
     { wait: 100 }
   );
