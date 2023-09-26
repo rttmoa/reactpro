@@ -10,8 +10,8 @@ import global from "./modules/global";  // 设置全局属性：是否黑暗模�
 import tabs from "./modules/tabs";      // 存储Tabs、添加Tabs、溢出Tabs、关闭Tabs、关闭其他Tabs、设置Tabs标题
 import auth from "./modules/auth";      // 存储权限的侧边栏、存储权限的按钮
 import user from "./modules/user";      // 存储用户Token、存储用户个人信息 
-
-const reducer = combineReducers({ global, tabs, auth, user });
+import todos from '../views/func/hooks/todos/store/reducer'
+const reducer = combineReducers({ global, tabs, auth, user, todos });
 
 // redux persist
 const persistConfig = {

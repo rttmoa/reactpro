@@ -23,7 +23,7 @@ const Intro = () => {
 				<p><b>UseRef</b></p>
 				<p><b>UseContext</b></p>
 				<p><b>UseReducer</b></p>  
-    	</Card>
+			</Card>
 		</div>
 	)
 }
