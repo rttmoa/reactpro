@@ -48,6 +48,7 @@
     "axios": "^1.4.0",
     "braft-editor": "^2.3.9",
     "clipboard": "^2.0.11",
+    "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
     "echarts": "^5.4.3",
     "echarts-for-react": "^2.0.8",
