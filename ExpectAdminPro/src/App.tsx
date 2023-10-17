@@ -56,6 +56,13 @@ const App: React.FC = () => {
     initLanguage();
   }, [language]);
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log(12);
+  //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("欢迎你阅读我的博客"));
+  //   }, 2000);
+  // }, []);
+
   let configProviderProps = {
     locale: language === "zh" ? zhCN : enUS,
     componentSize: componentSize,
