@@ -6,7 +6,11 @@ const UserName: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user.userInfo);
 
   // return <span className="username">{userInfo.name}</span>;
-  return <span className="username">{t("user.username")}</span>;
+  return (
+    <span className="username" style={{ fontFamily: "aliFonts" }}>
+      {t("user.username")}
+    </span>
+  );
 };
 
 export default UserName;

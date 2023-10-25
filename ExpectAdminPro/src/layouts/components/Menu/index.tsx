@@ -123,7 +123,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = ({ mode, menuList, menuSplit }) =>
 
   return (
     <Menu
-      // todo Menu-Api：https://ant.design/components/menu-cn#api
+      // todo; 字体 && Menu-Api：https://ant.design/components/menu-cn#api
       // Menu主题是 Dark
       theme={isDarkTheme ? "dark" : "light"}
       // Props: "inline" || "horizontal" || "vertical"
@@ -132,6 +132,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = ({ mode, menuList, menuSplit }) =>
       onClick={clickMenu}
       items={antdMenuList}
       {...(!isTransverseLayout && accordion && { openKeys, onOpenChange })}
+      style={{ fontFamily: "aliFonts" }}
     />
   );
 };
