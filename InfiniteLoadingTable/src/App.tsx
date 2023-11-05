@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import InfTable from "./table/InfTable";
 import JsonTable from "./table/JsonTable";
@@ -49,9 +49,9 @@ const App: React.FC = () => {
       <div className="App">
         <Container className="App-Content" {...ContentContainer}>
 
-          {/* <InfTable columnList={columnList} /> */}
+          <InfTable columnList={columnList} />
 
-          <JsonTable /> 
+          {/* <JsonTable />  */}
 
         </Container>
       </div>

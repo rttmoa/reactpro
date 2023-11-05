@@ -2,11 +2,11 @@
 import React, { useState, FunctionComponent } from "react";
 import {  InfiniteLoader,  Table,  Index,  IndexRange,  Column,  TableHeaderProps, } from "react-virtualized";
 import Draggable from "react-draggable";
-import "./InfTable.css";
 import styled from "styled-components";
-// import axios from "axios";
-// import { ThemeContext } from "../App";
 import useScreenWidth from "../shared/UseScreenWidth";
+import "./InfTable.css";
+
+// import axios from "axios";
 
 
 // Stype Component CSS
@@ -30,10 +30,9 @@ interface TableProps {
 
 // Functional Component
 const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
-  // const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {}
 
-  // 计算列宽度占比 （每列的长度占总数的多少）
-  function calculateRatio(list: {name: string; length: number}[]): {[key: string]: number} { // 每列的宽度占比
+  
+  function calculateRatio(list: {name: string; length: number}[]): {[key: string]: number} { // 计算列宽度占比 （每列的长度占总数的多少）
     let totalLength = 0;
     for (let i = 0; i < list.length; i++) {
       totalLength += list[i].length;
@@ -45,7 +44,6 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     // ratioMap: {column5: 0.1538461535385, column4: 0.15384615384685, column3: 0.23076923923078, column2: 0.230769076978, column1: 0.2307696923078}
     return ratioMap;
   }
-
   function makeid(length: number) { // 行数据  （随机生成length长度的字符串）
     // console.log(length) // 父组件传递过来的length长度
     var result = "";
@@ -57,32 +55,37 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     }
     return result;
   }
-  function generateRow(count: number, len: number) { // 生成 count 行数据, 数组长度为 len
+  function generateRow(count: number, len: number) { // 生成 count 行数据, 数组长度从 len 开始
     let newList = [];
     for (let i = 0; i < count; i++) {
-      let row: { [key: string]: string } = columnList.reduce(
-        (pre, cur) => Object.assign( {[cur.name] : makeid(cur.length)}, pre), {}
-      );
+      let row: { [key: string]: string } = columnList.reduce((pre, cur) => Object.assign( {[cur.name] : makeid(cur.length)}, pre), {});
       newList.push(Object.assign({ index: i + len }, row));
     }
+    // console.log('newList', newList);
     return newList;
   }
-  const [list, setList] = useState<{ [key: string]: string | number }[]>(generateRow(10, 1)); // 每行的数据
+  // ! 每行的数据
+  const [list, setList] = useState<{ [key: string]: string | number }[]>(generateRow(10, 0)); 
 
-  const [columnRatio, setColumnRatio] = useState(calculateRatio(columnList)); // 每列宽度
+  const [columnRatio, setColumnRatio] = useState(calculateRatio(columnList)); // ! 每列宽度
 
-  let screenWidth = useScreenWidth(); // 屏幕的宽度
+  // ! Hooks；屏幕的宽度
+  let screenWidth = useScreenWidth(); 
   // console.log('screenWidth', screenWidth)
 
 
-  function isRowLoaded({ index }: Index) { // 是否加载完成    InfiniteLoader['isRowLoaded']
+  // ! 是否加载完成    InfiniteLoader['isRowLoaded']
+  function isRowLoaded({ index }: Index) {
+    // console.log(list);
+    // console.log(index); // ? 0-38 设置rowCount={39} 即屏幕的高度总共39个count
     return Boolean(list[index])
   }
 
-
-  function loadMoreRows({ startIndex, stopIndex }: IndexRange) { // 是否加载更多数据   InfiniteLoader['loadMoreRows']
-    return new Promise((resolve, reject) => { 
-      // console.log(list, list.length) // 初始 10, 20, 30
+  // ! 是否加载更多数据   InfiniteLoader['loadMoreRows']
+  function loadMoreRows({ startIndex, stopIndex }: IndexRange) { 
+    // console.log('loadMoreRows', startIndex, stopIndex);
+    // return new Promise((resolve, reject) => { resolve(list) })
+    return new Promise((resolve, reject) => {
       let newList = [...list].concat(generateRow(10, list.length));
       setList(newList);
       resolve(newList);
@@ -90,21 +93,8 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
   }
   
 
-
-
-  // function rowClassName({ index }: Index) { // 行类名
-  //   if (index < 0) {
-  //     return "headerRow";  
-  //   } else {
-  //     return index % 2 === 0 ? "evenRow" : "oddRow";
-  //   }
-  // }
-  // function onRowClick({ index }: Index) { // 双击行 打印索引index
-  //   console.log("索引:", index)
-  // }
-
   
-
+  // ! 渲染头部；IND、COLUMN1
   function columnHeaderRender({ dataKey, label }: TableHeaderProps) {
     // console.log(dataKey)
     function nextKey(dataKey: string): string {
@@ -116,8 +106,7 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
       return "";
     }
     return (
-      <React.Fragment key={dataKey}>
-        {/* 顶部column名 */}
+      <React.Fragment key={dataKey}> 
         <div className="ReactVirtualized__Table__headerTruncatedText" key="label">
           {label}
         </div>
@@ -153,14 +142,14 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     <InfiniteLoader
       isRowLoaded={isRowLoaded} // 是否加载完成
       loadMoreRows={loadMoreRows} // 是否加载更多数据
-      rowCount={1000} // 最大数量
+      rowCount={39} // 最大数量 = 接口返回的 count
     >
       {({ onRowsRendered, registerChild }) => (
         <div>
           <Table
-            width={screenWidth - 10 } // 获取屏幕宽度
-            height={window.innerHeight - 30}
-            headerHeight={40}
+            width={screenWidth - 10} // 获取屏幕宽度
+            height={window.innerHeight - 20}
+            headerHeight={50}
             rowHeight={40}
             rowCount={list.length}
             rowGetter={({ index }) => { return list[index]}}
@@ -170,13 +159,13 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
             headerClassName="headerColumn"
             ref={registerChild}
           >
-            <Column label="Index" dataKey="index" width={60} />
+            <Column label="Ind" dataKey="index" width={60} />
             {columnList.map((column) => (
               <Column
+                key={column.name}
                 label={column.name}
                 dataKey={column.name}
                 width={(screenWidth - 80) * columnRatio[column.name]}
-                key={column.name}
                 headerRenderer={columnHeaderRender}
               >
               </Column>
