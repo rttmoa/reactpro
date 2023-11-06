@@ -26,7 +26,9 @@ interface TableProps {
   }[];
 }
 
-  
+
+
+
 
 // Functional Component
 const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
@@ -54,8 +56,8 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-  }
-  function generateRow(count: number, len: number) { // 生成 count 行数据, 数组长度从 len 开始
+  } 
+  function generateRow(count: number, len: number,) { // 生成 count 行数据, 数组长度从 len 开始
     let newList = [];
     for (let i = 0; i < count; i++) {
       let row: { [key: string]: string } = columnList.reduce((pre, cur) => Object.assign( {[cur.name] : makeid(cur.length)}, pre), {});
@@ -142,7 +144,7 @@ const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
     <InfiniteLoader
       isRowLoaded={isRowLoaded} // 是否加载完成
       loadMoreRows={loadMoreRows} // 是否加载更多数据
-      rowCount={39} // 最大数量 = 接口返回的 count
+      rowCount={100} // 最大数量 = 接口返回的 count
     >
       {({ onRowsRendered, registerChild }) => (
         <div>

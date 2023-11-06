@@ -12,7 +12,8 @@
 
 
   todo webpack5x-mobx-admin
-    @ /build/webpack*   Webpack配置
+    react17 + mobx5 + react-router5 + webpack5x + antd4
+    ? @ /build/webpack*   Webpack配置
     @ /src/layouts/*    Layout布局
       + /BasicLayout
       + /BlankLayout
@@ -35,9 +36,9 @@
       + /System
         + GroovySet/
           = class GroovySetStore {}
-    @ /src/routers    封装项目路由配置 & 封装项目路由
-    @ /src/services   二次封装axios
-    @ /src/stores     处理全局 Store
+    ? @ /src/routers    封装项目路由配置 & 封装项目路由
+    ? @ /src/services   二次封装axios
+    ? @ /src/stores     Mobx & 处理全局 Store
       + class CommonStore {}
       + class GlobalStore {}
     @ /src/styles     封装公共Less

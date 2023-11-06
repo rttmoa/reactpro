@@ -5,7 +5,7 @@
   "author": {
     "name": "zhangsan"
   },
-  "description": "🌈 🚀基于webpack4.0 从零搭建的React中后台项目框架模板。🚀", 
+  "description": "🌈 🚀基于webpack5.0 从零搭建的React中后台项目框架模板。🚀", 
   "license": "MIT",
   "scripts": {
     "start": "webpack serve  --color --progress --config build/webpack.dev.js",
