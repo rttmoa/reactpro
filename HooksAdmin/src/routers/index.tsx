@@ -38,7 +38,7 @@ export const rootRouter: RouteObject[] = [{
 		path: "*",
 		element: <Navigate to="/404" />
 }];
-
+// console.log(rootRouter);
 const Router = () => useRoutes(rootRouter);
 
 export default Router;

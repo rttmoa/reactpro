@@ -15,9 +15,11 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 
 module.exports = {
+  // ! 入口
   entry: {
     main: path.join(__dirname, '../src/main.js'),
   },
+  // ! 出口
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name].[chunkhash:8].js',
@@ -30,6 +32,7 @@ module.exports = {
       '@pages': `${srcDir}/pages`,
     },
   },
+  // ! 加载器
   module: {
     rules: [
       {
@@ -63,6 +66,12 @@ module.exports = {
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         use: ['url-loader'],
+        // type: "assets",
+        // parser: { // 对图片资源进行优化
+        //   dataUrlCondition: {
+        //     maxSize: 10 * 1024 // 小于10kb的图片会被base64处理
+        //   }
+        // },
         include: [srcDir],
       },
       {
@@ -72,6 +81,7 @@ module.exports = {
       },
     ],
   },
+  // ! 插件
   plugins: [
     // 开启 happypack 的线程池
     new HappyPack({

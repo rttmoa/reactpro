@@ -4,8 +4,8 @@
 module.exports = {
   extends: ['airbnb', 'prettier'],
   env: {
-    browser: true,
-    node: true,
+    browser: true, // 启用 浏览器 中全局变量
+    node: true, // 启用 node 中全局变量
     es6: true,
     jquery: true,
   },

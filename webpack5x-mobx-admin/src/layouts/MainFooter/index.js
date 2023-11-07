@@ -5,7 +5,7 @@ import { Layout } from 'antd';
 
 
 
-const MainFooter = () => <Layout.Footer>------------底部-------------</Layout.Footer>;
+const MainFooter = () => <Layout.Footer>------------底部-------------</Layout.Footer>
 
 export default MainFooter;
 

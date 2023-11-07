@@ -1,16 +1,13 @@
 {
   "name": "react-web-pro",
   "version": "1.0.0",
-  "private": true,
-  "author": {
-    "name": "zhangsan"
-  },
-  "description": "🌈 🚀基于webpack5.0 从零搭建的React中后台项目框架模板。🚀", 
+  "private": true, 
+  "description": "🌈 🚀基于webpack5.0 从零搭建的React中后台项目框架模板。🚀",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve  --color --progress --config build/webpack.dev.js",
-    "build": "NODE_ENV=production webpack --progress --config ./build/webpack.prod.js",
-    "build:watch": "NODE_ENV=production webpack --progress --config ./build/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --progress --config ./build/webpack.prod.js",
+    "build:watch": "cross-env NODE_ENV=production webpack --progress --config ./build/webpack.prod.js",
     "build:report": "yarn build:watch",
     "prettier": "prettier --write 'src/**/*.{js,jsx,tsx,ts,less,md,json}'",
     "lint:style": "stylelint \"src/**/*.less\" --syntax less",

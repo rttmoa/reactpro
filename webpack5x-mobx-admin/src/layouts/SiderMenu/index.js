@@ -13,8 +13,7 @@ import { Layout, Menu, Row } from 'antd';
 import { RocketTwoTone } from '@ant-design/icons';
 import { appStores } from '../../stores';
 import './style.less';
-
-
+  
 
 /** #### TODO: 处理侧边栏：通过Mobx处理collapsed、通过routes处理Menu、Hooks处理Menu  */
 const renderMenuItem = (target) =>

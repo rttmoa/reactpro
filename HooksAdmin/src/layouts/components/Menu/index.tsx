@@ -12,7 +12,7 @@ import type { MenuProps } from "antd";
 import * as Icons from "@ant-design/icons";
 import Logo from "./components/Logo";
 import "./index.less";
-
+// console.log(Icons);
 
 
 
@@ -21,6 +21,7 @@ import "./index.less";
 
 
 const LayoutMenu = (props: any) => {
+	// console.log('props', props);
 	const { pathname } = useLocation(); 
 	const { isCollapse, setBreadcrumbList, setAuthRouter, setMenuList: setMenuListAction } = props;
 
@@ -47,7 +48,7 @@ const LayoutMenu = (props: any) => {
 	const getItem = (
 		label: React.ReactNode,
 		key?: React.Key | null,
-		icon?: React.ReactNode,
+		icon?: React.ReactNode | undefined,
 		children?: MenuItem[],
 		type?: "group"
 	): MenuItem => {
@@ -63,15 +64,25 @@ const LayoutMenu = (props: any) => {
 	// 动态渲染 Icon 图标
 	const customIcons: { [key: string]: any } = Icons;
 	const addIcon = (name: string) => {
-		return React.createElement(customIcons[name]);
+		// console.log('addIcon', name);
+		// console.log('customIcons', customIcons[name]);
+		if(customIcons[name]) {
+			return React.createElement(customIcons[name]);
+		}
+		else{
+			return undefined
+		}
+		
 	};
 
 	// 处理后台返回菜单 key 值为 antd 菜单需要的 key 值
 	const deepLoopFloat = (menuList: Menu.MenuOptions[], newArr: MenuItem[] = []) => {  // 只传递一个List，第二个参数默认为List，仅供处理后返回用
+		// console.log('menuList-ForEach', menuList);
 		menuList.forEach((item: Menu.MenuOptions) => {
+			// console.log(item);
 			// 下面判断代码解释 *** !item?.children?.length   ==>   (!item.children || item.children.length === 0)
-			if (!item?.children?.length) return newArr.push(getItem(item.title, item.path, addIcon(item.icon!)));
-			newArr.push(getItem(item.title, item.path, addIcon(item.icon!), deepLoopFloat(item.children)));
+			if (!item?.children?.length) return newArr.push(getItem(item.meta.title, item.path, addIcon(item.meta.icon!)));
+			newArr.push(getItem(item.meta.title, item.path, addIcon(item.meta.icon!), deepLoopFloat(item.children)));
 		});
 		// console.log("初始：", menuList)
 		// console.log("结果：", newArr)
@@ -84,23 +95,29 @@ const LayoutMenu = (props: any) => {
 	const getMenuData = async () => {
 		setLoading(true);
 		try {
-			const { data } = await getMenuList();
-			if (!data) return;
-			// console.log('meun', data);
-			// NOTE: 将接口的数据处理成Antd要的数据
-			// console.log("初始：", data)
-			// console.log("结果：", deepLoopFloat(data))
-			setMenuList(deepLoopFloat(data));
+			console.log(await getMenuList());
+			// const { data } = await getMenuList();
+			const results = await getMenuList()
+			if(results && results.msg == "成功"){
+				const { data } = results
+				if (!data) return;
+				console.log('meun', data);
+				// NOTE: 将接口的数据处理成Antd要的数据
+				// console.log("初始：", data)
+				// console.log("结果：", deepLoopFloat(data))
+				setMenuList(deepLoopFloat(data));
 
-			// 存储处理过后的所有面包屑导航栏到 redux 中
-			setBreadcrumbList(findAllBreadcrumb(data));
+				// 存储处理过后的所有面包屑导航栏到 redux 中
+				setBreadcrumbList(findAllBreadcrumb(data));
 
-			// 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
-			const dynamicRouter = handleRouter(data);
-			// console.log("处理后的路由菜单", dynamicRouter)
-			setAuthRouter(dynamicRouter);
+				// 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
+				const dynamicRouter = handleRouter(data);
+				// console.log("处理后的路由菜单", dynamicRouter)
+				setAuthRouter(dynamicRouter);
 
-			setMenuListAction(data);
+				// console.log(data);
+				setMenuListAction(data);
+			} 
 		} finally {
 			setLoading(false);
 		}
@@ -120,6 +137,9 @@ const LayoutMenu = (props: any) => {
 		navigate(key);
 	};
 
+
+
+	// console.log(menuList);
 	return (
 		<div className="menu">
 			<Spin spinning={loading} tip="Loading...">
