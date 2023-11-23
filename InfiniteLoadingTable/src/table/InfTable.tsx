@@ -6,10 +6,8 @@ import styled from "styled-components";
 import useScreenWidth from "../shared/UseScreenWidth";
 import "./InfTable.css";
 
-// import axios from "axios";
 
 
-// Stype Component CSS
 const DragHandleIcon = styled.span`
   flex: 0 0 12px;
   display: flex;
@@ -28,9 +26,6 @@ interface TableProps {
 
 
 
-
-
-// Functional Component
 const InfTable: FunctionComponent<TableProps> = ({ columnList }) => {
 
   

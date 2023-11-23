@@ -12,7 +12,7 @@
 
 
   todo webpack5x-mobx-admin
-    react17 + mobx5 + react-router5 + webpack5x + antd4
+    react17 + mobx5 + react-router5 + webpack5x + antd4 + less
     ? @ /build/webpack*   Webpack配置
     @ /src/layouts/*    Layout布局
       + /BasicLayout
