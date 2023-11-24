@@ -1,6 +1,6 @@
 # 无限滚动的纯前端 Table 组件
 
-    React + Typescript + Styled Component + Hooks + React-Virtualized
+ **使用React + Typescript + Styled Component + Hooks + React-Virtualized**
 
 **知乎文章地址：https://zhuanlan.zhihu.com/p/129791566**
 
