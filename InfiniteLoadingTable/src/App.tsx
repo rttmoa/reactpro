@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import InfTable from "./table/InfTable";
-import JsonTable from "./table/JsonTable";
+// import JsonTable from "./table/JsonTable";
   
 
 
