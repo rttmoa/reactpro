@@ -23,18 +23,7 @@ let config = merge(commonConfig, {
       chunkFilename: 'chunk/[id].[contenthash:8].css',
     }),
     new webpack.ids.HashedModuleIdsPlugin(),
-  ],
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       commons: {
-  //         name: "commons",
-  //         chunks: "initial",
-  //         minChunks: 2
-  //       }
-  //     }
-  //   }
-  // }
+  ], 
   performance: {
     maxEntrypointSize: 400000,
     maxAssetSize: 800000,
@@ -50,7 +39,7 @@ let config = merge(commonConfig, {
           test: /[\\/]node_modules[\\/](react|react-dom|react-dom-router|babel-polyfill|mobx|mobx-react|mobx-react-dom|antd|@ant-design)/,
           minChunks: 1,
           priority: 2,
-          name: 'dll',
+          name: 'dllName',
         },
         codeMirror: {
           test: /[\\/]node_modules[\\/](react-codemirror|codemirror)/,
@@ -62,7 +51,7 @@ let config = merge(commonConfig, {
           test: /[\\/]node_modules[\\/]/,
           minChunks: 1,
           priority: 1,
-          name: 'vendors',
+          name: 'vendorsName',
         },
       },
     },

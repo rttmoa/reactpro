@@ -2,7 +2,7 @@
   "name": "react-web-pro",
   "version": "1.0.0",
   "private": true, 
-  "description": "🌈 🚀基于webpack5.0 从零搭建的React中后台项目框架模板。🚀",
+  "description": "🌈 🚀基于webpack5.0 从零搭建的React中后台项目框架模板。🚀 yarn start",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve  --color --progress --config build/webpack.dev.js",
