@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const row1 = [
+            {
+                key1: 'value1',
+                key2: 'value2',
+
+            },
+            {
+                key1: 'value1',
+                key2: 'value2',
+
+            },
+            {
+                key1: 'value1',
+                key2: 'value2',
+                arr: [1, 2, 3]
+            },
+            // [12,13]
+        ];
+
+        const isPrimitive = (element) => {
+            let flag = true
+            for (let e of element) {
+                flag = flag && (e !== Object(e))
+            }
+            return flag
+        }
+
+        const isPrimitiveElement = (e) => {
+            // console.log('e', e)
+            // console.log('Object', Object(e))
+            return (e !== Object(e))
+        }
+
+        // console.log({uname:'111'} !== Object({uname:'111'}))
+
+        // get all the key of a object list
+        const getKeys = (arr) => {
+            let s = new Set()
+            // console.log(s) // Set(0) {size: 0}   [[Entries]]   [[Prototype]]: Set
+
+            for (const e of arr) {
+                // console.log(e) // e 为每个对象：{key1: 'value1', key2: 'value2'}、{key1: 'value1', key2: 'value2'}、{key1: 'value1', key2: 'value2', arr: Array(3)}
+                // console.log(isPrimitiveElement(e))
+                if (!isPrimitiveElement(e))
+                    for (const key of Object.keys(e)) {
+                        // console.log(key) // 这里key被过滤掉了、否则会重复
+                        s.add(key)
+                    }
+            }
+            // console.log(s) // Set(3) {'key1', 'key2', 'arr'}
+            return s
+        }
+
+        // Make sure each object in the arr has key in set keys
+        const matchWithKeys = (arr, keys ) => {
+            for (let element of arr) { // element为每一个对象
+                
+                for (let key of keys) {
+                    // console.log(element.hasOwnProperty('key1')) // 9 true
+                    // console.log(element.hasOwnProperty('arr'))     // 3 true    6 false   arr3表示、最后一个对象遍历了三次
+                    if (!element.hasOwnProperty(key)) {
+                        // console.log(123)
+                        // console.log(element) // {key1: 'value1', key2: 'value2'}
+                        element = Object.assign(element, { [key]: null })
+                        // console.log(element) // {key1: 'value1', key2: 'value2', arr: null}
+                    } else {
+                        // console.log(345)
+                        element = Object.assign(element)
+                    }
+                }
+            }
+            return arr
+        }
+
+        // console.log(getKeys(row1)) // Set(3) {'key1', 'key2', 'arr'}
+
+        console.log(matchWithKeys(row1, getKeys(row1)))
+    </script>
+</body>
+
+</html>
